@@ -10,5 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "node-static": "^0.7.9"
+  },
+  "devDependencies": {
+    "eslint": "^3.10.2"
   }
 }
