@@ -3,7 +3,6 @@ var http = require("http");
 
 var file = new nodeStatic.Server("./static", {cache:0});
 
-
 var cleanPath = (path) => {
     if (path == "/") {
         return "app/html/app.html";
