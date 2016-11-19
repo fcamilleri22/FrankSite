@@ -9,6 +9,7 @@
   "author": "Frank Camilleri",
   "license": "ISC",
   "dependencies": {
+    "bower": "^1.8.0",
     "node-static": "^0.7.9"
   },
   "devDependencies": {
