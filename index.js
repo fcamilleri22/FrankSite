@@ -13,7 +13,6 @@ var cleanPath = (path) => {
 };
 
 var handlePath = (path, req, res) => {
-    //console.log(path.substr(1).indexOf("/"));
     console.log(`----------`);
     console.log(`Handling: ${path}`);
     path = cleanPath(path);
