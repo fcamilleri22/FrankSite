@@ -3,11 +3,20 @@ var http = require("http");
 
 var file = new nodeStatic.Server("./static", {cache:0});
 
-var handlePath = (path, req, res) => {
-    console.log(`Handling: ${path}`);
+
+var cleanPath = (path) => {
     if (path == "/") {
-        path = "app/html/app.html";
+        return "app/html/app.html";
     }
+    var splitPath = path.split("/").slice(1);
+    return splitPath[0] == "static" ? splitPath.slice(1).join("/") : path;
+};
+
+var handlePath = (path, req, res) => {
+    //console.log(path.substr(1).indexOf("/"));
+    console.log(`----------`);
+    console.log(`Handling: ${path}`);
+    path = cleanPath(path);
     console.log(`Serving: ${path}`)
     req.url = path;
     file.serve(req, res);
@@ -15,5 +24,5 @@ var handlePath = (path, req, res) => {
 
 http.createServer((req, res) => {
     // console.log(`Serving ${req.url}`);
-    handlePath (req.url, req, res);
+    handlePath(req.url, req, res);
 }).listen(80, (err) => {if (err) throw err;});
