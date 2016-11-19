@@ -1,0 +1,11 @@
+{
+  "name": "franksite",
+  "version": "1.0.0",
+  "description": "A showcase/portfolio web-app for Frank Camilleri's independent web work.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Frank Camilleri",
+  "license": "ISC"
+}
