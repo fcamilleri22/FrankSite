@@ -4,7 +4,8 @@ require.config({
         app: "app/js",
         html: "app/html",
         jquery: "lib/js/jquery/dist/jquery",
-        requirejs: "lib/js/requirejs/require"
+        requirejs: "lib/js/requirejs/require",
+        text: "lib/js/text/text"
     }
 });
 
