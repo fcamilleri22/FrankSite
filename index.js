@@ -24,3 +24,5 @@ http.createServer((req, res) => {
     // console.log(`Serving ${req.url}`);
     handlePath(req.url, req, res);
 }).listen(80, (err) => {if (err) throw err;});
+
+console.log("Server ACTIVE on 80.");
