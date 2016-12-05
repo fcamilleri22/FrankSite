@@ -1,7 +1,11 @@
-/*
- * Start Bootstrap - Landing Page (http://startbootstrap.com/)
- * Copyright 2013-2016 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+
+ /*
+ pallette:
+ alert: orange #ff7e2a
+ minor color: #33aadd
+ major grey: #222222
+ major grey middle: #444444
+ major grey light: #666666
  */
 
 body,
@@ -21,6 +25,20 @@ h6 {
     font-weight: 700;
 }
 
+.btn {
+    border-width: 3px;
+    border-color: #33aadd;
+    background-color: #222222;
+    color:#33aadd;
+    width: 225px
+}
+
+.btn:hover {
+    border-color: #ff7e2a;
+    background-color: #222222;
+    color:#ff7e2a;
+}
+
 .topnav {
     font-size: 14px;
 }
@@ -35,7 +53,8 @@ h6 {
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../img/pinstripeIntroBanner.jpg) no-repeat center center;
+    background: #222222;
+    /*background: url(../img/pinstripeIntroBanner.jpg) no-repeat center center;*/
     background-size: cover;
 }
 
@@ -47,6 +66,7 @@ h6 {
 
 .intro-message > h1 {
     margin: 0;
+    color: #f8f8f8;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
     font-size: 5em;
 }
@@ -58,7 +78,69 @@ h6 {
 }
 
 .intro-message > h3 {
+    color: #f8f8f8;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+}
+
+em, u {
+    color: #33aadd;
+}
+
+.content-section-a {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+    padding: 50px 0;
+    color: #f8f8f8;
+    background-color: #444444;
+    /*border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;*/
+}
+
+.content-section-b {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+    color: #f8f8f8;
+    background: #222222;
+    padding: 50px 0;
+}
+
+.network-name {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+
+.section-heading {
+    margin-bottom: 30px;
+}
+
+.section-heading-spacer {
+    float: left;
+    width: 200px;
+    border-top: 3px solid #e7e7e7;
+}
+
+.banner {
+    padding: 100px 0;
+    color: #f8f8f8;
+    background: #222222;
+    /*background: url(../img/pinstripeIntroBanner.jpg) no-repeat center center;*/
+    background-size: cover;
+}
+
+.banner h2 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 3em;
+}
+
+.banner ul {
+    margin-bottom: 0;
+}
+
+.banner-social-buttons {
+    float: right;
+    margin-top: 0;
 }
 
 @media(max-width:767px) {
@@ -83,56 +165,6 @@ h6 {
     .intro-divider {
         width: 100%;
     }
-}
-
-.network-name {
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 2px;
-}
-
-.content-section-a {
-    padding: 50px 0;
-    background-color: #f8f8f8;
-}
-
-.content-section-b {
-    padding: 50px 0;
-    border-top: 1px solid #e7e7e7;
-    border-bottom: 1px solid #e7e7e7;
-}
-
-.section-heading {
-    margin-bottom: 30px;
-}
-
-.section-heading-spacer {
-    float: left;
-    width: 200px;
-    border-top: 3px solid #e7e7e7;
-}
-
-.banner {
-    padding: 100px 0;
-    color: #f8f8f8;
-    background: url(../img/pinstripeIntroBanner.jpg) no-repeat center center;
-    background-size: cover;
-}
-
-.banner h2 {
-    margin: 0;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-    font-size: 3em;
-}
-
-.banner ul {
-    margin-bottom: 0;
-}
-
-.banner-social-buttons {
-    float: right;
-    margin-top: 0;
 }
 
 @media(max-width:1199px) {
@@ -162,9 +194,10 @@ h6 {
 
 footer {
     padding: 50px 0;
-    background-color: #f8f8f8;
+    background-color: #222222;
 }
 
 p.copyright {
+    background-color: #222222;
     margin: 15px 0 0;
 }
