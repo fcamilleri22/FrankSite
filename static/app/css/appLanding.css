@@ -30,7 +30,7 @@ h6 {
     border-color: #33aadd;
     background-color: #222222;
     color:#33aadd;
-    width: 225px
+    width: 225px;
 }
 
 .btn:hover {
@@ -46,6 +46,14 @@ h6 {
 .lead {
     font-size: 18px;
     font-weight: 400;
+}
+
+.skillInfo {
+    font-size: 18px;
+    font-weight: 400;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .intro-header {
@@ -85,6 +93,22 @@ h6 {
 em, u {
     color: #33aadd;
 }
+
+.toprow > *{
+    margin-bottom:5px;
+}
+
+.midrow > *{
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+.bottomrow > *{
+    margin-top:5px;
+}
+
+
+
 
 .content-section-a {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
@@ -144,6 +168,12 @@ em, u {
 }
 
 @media(max-width:767px) {
+
+    .lead {
+        font-size: 21px;
+        font-weight: 400;
+    }
+
     .intro-message {
         padding-bottom: 15%;
     }
@@ -165,16 +195,7 @@ em, u {
     .intro-divider {
         width: 100%;
     }
-}
 
-@media(max-width:1199px) {
-    ul.banner-social-buttons {
-        float: left;
-        margin-top: 15px;
-    }
-}
-
-@media(max-width:767px) {
     .banner h2 {
         margin: 0;
         text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
@@ -189,6 +210,13 @@ em, u {
 
     ul.banner-social-buttons > li:last-child {
         margin-bottom: 0;
+    }
+}
+
+@media(max-width:1199px) {
+    ul.banner-social-buttons {
+        float: left;
+        margin-top: 15px;
     }
 }
 
