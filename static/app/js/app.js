@@ -22,8 +22,8 @@ function($, renderer, util){
         textButton("git-btn",`Over the last few years, I've become an expert at using Git, a distributed version control system. At Mass Exchange, I am
         very often responsible for handling merges of new releases, figuring out where bugs were introduced and by whom, coordinating
         other developers branches using <a href="http://nvie.com/posts/a-successful-git-branching-model/">GitFlow,</a> an extremely
-        good branching model that prevents myself and other developers from violating and polluting our master branches and sometimes
-        repairing and resetting branches strategically when things do go awry.`);
+        good branching model that prevents myself and other developers from violating and polluting our master branches, and sometimes
+        even repairing and resetting branches surgically when things do go awry -- and they always eventually do go awry.`);
 
         // $("#linux-btn").click(function(){
         //     var row = $("#infoRow1");
