@@ -13,7 +13,8 @@ function($, require, cssHandler){
 
     //requires that HTML and CSS have the same name
     exports.renderHtmlWithCss = function(name, containerDiv, isPermanent){
-        isPermanent ? cssHandler.load(name) : cssHandler.loadDynamic(name);
+        isPermanent ? cssHandler.jqueryFreeLoad(name) : cssHandler.loadDynamic(name);
+        console.log("YES FRANK YOU ACTUALLY FUCKING DID IT");
         return renderText("text!", "html", `${name}.html`, containerDiv);
     };
 

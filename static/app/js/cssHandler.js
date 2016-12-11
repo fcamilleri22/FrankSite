@@ -15,6 +15,18 @@ function($){
         }
     };
 
+    exports.jqueryFreeLoad = function(name){
+        if (!styleSheets[name]){
+            var sheetElement = document.createElement("link");
+            sheetElement.setAttribute("type", "text/css");
+            sheetElement.setAttribute("rel", "stylesheet");
+            sheetElement.setAttribute("href", `/static/app/css/${name}.css`);
+            var head = document.getElementsByTagName("head")[0];
+            head.appendChild(sheetElement);
+            console.log("Told ya, so.")
+        }
+    }
+
     exports.loadDynamic = function(name) {
 		if (!styleSheets.dynamic[name]){
 			styleSheets.dynamic[name] = $("<link>").attr({
