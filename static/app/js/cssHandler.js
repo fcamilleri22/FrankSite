@@ -4,7 +4,7 @@ function(){
     var styleSheets = {};
     var dynStyleSheets = {};
 
-    var head = document.getElementsByTagName("head")[0];
+    var head = document.head;
 
     var buildCSSLink = function(name, isDynamic){
         var sheetElement = document.createElement("link");
