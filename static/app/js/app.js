@@ -1,5 +1,5 @@
 define(["app/renderer", "app/util"],
-function($, renderer, util){
+function(renderer, util){
 
     renderer.renderPage("appLanding", document.body, true).then(function(){
 
