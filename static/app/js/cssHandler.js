@@ -1,58 +1,44 @@
-define(["jquery"],
-function($){
+define([],
+function(){
     var exports = {};
-    var styleSheets = {"dynamic": {}}; //all others are static, meaning they persist through loads
+    var styleSheets = {};
+    var dynStyleSheets = {};
 
-    var head = $("head");
+    var head = document.getElementsByTagName("head")[0];
 
-    exports.load = function(name){
-        if (!styleSheets[name]){
-            styleSheets[name] = $("<link>").attr({
-                type: "text/css",
-                rel: "stylesheet",
-                href: "/static/app/css/" + name + ".css"
-            }).appendTo(head);
-        }
+    var buildCSSLink = function(name, isDynamic){
+        var sheetElement = document.createElement("link");
+        sheetElement.setAttribute("type", "text/css");
+        sheetElement.setAttribute("rel", "stylesheet");
+        sheetElement.setAttribute("href", `/static/app/css/${name}.css`);
+        if (isDynamic) sheetElement.setAttribute("class", "dynamic");
+        return sheetElement;
     };
 
-    exports.jqueryFreeLoad = function(name){
-        if (!styleSheets[name]){
-            var sheetElement = document.createElement("link");
-            sheetElement.setAttribute("type", "text/css");
-            sheetElement.setAttribute("rel", "stylesheet");
-            sheetElement.setAttribute("href", `/static/app/css/${name}.css`);
-            var head = document.getElementsByTagName("head")[0];
-            head.appendChild(sheetElement);
-            console.log("Told ya, so.")
+    exports.load = function(name, isDynamic){
+        var sheetMap = isDynamic ? dynStyleSheets : styleSheets;
+        if (!sheetMap[name]){
+            var sheetNode = buildCSSLink(name, isDynamic);
+            sheetMap[name] = sheetNode;
+            head.appendChild(sheetNode);
         }
-    }
-
-    exports.loadDynamic = function(name) {
-		if (!styleSheets.dynamic[name]){
-			styleSheets.dynamic[name] = $("<link>").attr({
-                type: "text/css",
-                rel: "stylesheet",
-                href: "/static/app/css/" + name + ".css"
-			}).appendTo(head);
-		}
-	};
+    };
 
     exports.unload = function(name) {
         styleSheets[name].remove();
+        delete styleSheets[name];
     };
 
     exports.unloadDynamic = function(name) {
-        styleSheets.dynamic[name].remove();
+        dynStyleSheets[name].remove();
+        delete dynStyleSheets[name];
     };
 
     exports.unloadAllDynamic = function() {
-        for(var name in styleSheets.dynamic)
-        {
-            if(styleSheets.dynamic.hasOwnProperty(name))
-                styleSheets.dynamic[name].remove();
-        }
-
-        styleSheets.dynamic = {};
+        Object.keys(dynStyleSheets).forEach((name) => {
+            dynStyleSheets[name].remove();
+            delete dynStyleSheets[name];
+        });
     };
 
     return exports;
