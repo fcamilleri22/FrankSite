@@ -1,8 +1,9 @@
-define(["app/renderer", "app/util", "app/displayGrid"],
-function(renderer, util, displayGrid){
+define(["app/components/DisplayGrid"],
+function(DisplayGrid){
 
-    renderer.renderPage("appLanding", document.body, true).then(function(){
-        var grid = displayGrid();
+    var grid = new DisplayGrid();
+    document.body.appendChild(grid.prop1);
+    //renderer.renderPage("appLanding", document.body, true).then(function(){
     //     // var wrapTextInSkillStyleDiv = (text) => `<div class=skillInfo>${text}</div>`;
     //     //
     //     // var textButton = function(buttonId, infoString){
@@ -24,6 +25,6 @@ function(renderer, util, displayGrid){
     //     // good branching model that prevents myself and other developers from violating and polluting our master branches, and sometimes
     //     // even repairing and resetting branches surgically when things do go awry -- and they always eventually do go awry.`);
     //
-    });
+    //});
 
 });
