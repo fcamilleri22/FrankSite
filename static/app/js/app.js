@@ -2,6 +2,7 @@ define(["app/components/DisplayGrid"],
 function(DisplayGrid){
 
     var grid = new DisplayGrid();
+    console.log(grid.prop1);
     document.body.appendChild(grid.prop1);
     //renderer.renderPage("appLanding", document.body, true).then(function(){
     //     // var wrapTextInSkillStyleDiv = (text) => `<div class=skillInfo>${text}</div>`;
