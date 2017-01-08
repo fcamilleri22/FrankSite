@@ -1,7 +1,6 @@
 define(["require", "app/cssHandler"],
 function(require, cssHandler){
     //return function(containerDiv){
-    exports = {};
 
     var renderText = exports.renderText = function(requireJsPrefix, dir, fileName, documentNode){
         return new Promise((resolve) => {
