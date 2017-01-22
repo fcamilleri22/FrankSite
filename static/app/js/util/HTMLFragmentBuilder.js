@@ -9,21 +9,34 @@ define(
             //first, the trivial -- no content, no props, just types -- if no type, deeper error
             const el = document.createElement(type);
 
+            //if we don't have any properties or more content, we're done.
             if (moreContent.length == 0 && !propsOrContent){
                 return el;
             }
 
-            if (!propsOrContent.tagName){ // if it has a tagName, it's a DOM object. if its not, it's a property set
-                //extract out for readability
-                Object.keys(propsOrContent).forEach(prop => el[prop] = propsOrContent[prop]);
+            //If propsOrContent is not more HTML content.
+            if (!(propsOrContent instanceof window.Element)){
+                //Add its props and styling
+                Object.keys(propsOrContent).forEach(prop => {
+                    if (prop == "style"){
+                        Object.keys(propsOrContent.style).forEach(styleAttr => {
+                            el.style[styleAttr] = propsOrContent.style[styleAttr];
+                        });
+                    }
+                    else el[prop] = propsOrContent[prop];
+                });
+                //If trailing content is only a single string, append it.
                 if (moreContent.length == 1 && typeof moreContent[0] == "string"){
                     el.textContent = moreContent[0];
                     return el;
                 }
             }
 
+            //If there's more content, append it.
             if (moreContent){
-                moreContent.forEach((content) => el.appendChild(content));
+                moreContent.forEach((content) => {
+                    el.appendChild(content);
+                });
             }
 
             return el;
