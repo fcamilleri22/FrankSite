@@ -1,20 +1,27 @@
 define(["app/util/HTMLFragmentBuilder"],
-(hfb) => {
+(h) => {
     const DisplayGridRow = class {
+        //Variables declared but not instantiated here are instantiated after render.
+        //items is an array of key value pairs
+        //container is an html element
         constructor(items, container){
             this.container = container;
+            this.id = container.id;
             this.items = items;
             this.buttonWidth = "200px";
-            let buttonSpacing = (100/items.length);
-            this.buttonSpacing = `${buttonSpacing}%`;
+            this.buttonSpacing = `${100/items.length}%`;
+            this.displayContainer;
+            this.buttons;
         }
 
-        createDisplayGridButton(buttonText){
+        createDisplayGridButton(buttonText, buttonContent){
+            let thisClass = this;
             let regStyle = {
                 "text-align":"center",
                 margin:"auto",
                 padding:"10px",
                 border:"3px solid #33aadd",
+                "color":"#33aadd",
                 "background-color": "#666666",
                 width: this.buttonWidth
             };
@@ -24,11 +31,12 @@ define(["app/util/HTMLFragmentBuilder"],
                 margin:"auto",
                 padding:"10px",
                 border:"3px solid #ff7e2a",
+                "color":"#ff7e2a",
                 "background-color": "#777777",
                 width: this.buttonWidth
             };
 
-            return hfb.div({
+            return h.div({
                 className: "button-container",
                 style:{
                     display:"inline-block",
@@ -36,39 +44,55 @@ define(["app/util/HTMLFragmentBuilder"],
                     width: this.buttonSpacing
                 }
             },
-                hfb.div({
+                h.div({
                     className: "button",
                     style: regStyle,
                     onmouseover: function(){Object.assign(this.style, hoverStyle);},
                     onmouseleave: function(){Object.assign(this.style, regStyle);},
-                    onclick: function(){console.log(window.innerWidth);},
-                    onresize: function(){console.log(window.innerWidth);}
+                    onclick: function(){(thisClass.displayContainer.innerHTML == buttonContent) ? thisClass.clearDisplay() : thisClass.displayContainer.innerHTML = buttonContent;}
                 },
                     buttonText
                 )
             );
         }
 
+        clearDisplay(){
+            this.displayContainer.innerHTML="";
+        }
+
         fillRow(){
-            let returnArray = [];
-            this.items.forEach(item => returnArray.push(this.createDisplayGridButton(item)));
-            return returnArray;
+            let buttonArray = [];
+            this.items.forEach(item => buttonArray.push(this.createDisplayGridButton(item.key, item.value)));
+            return h.div({
+                className:"row-buttons"
+            },
+                ...buttonArray
+            );
+        }
+
+        initializeButtonsField(row){
+            this.buttons = [];
+            row.childNodes.forEach(node => this.buttons.push(node.firstElementChild));
         }
 
         render(){
-            let fragmentToDraw = document.createDocumentFragment();
-            let frag = hfb.div({
-                className:"row",
-                style:{
-                    width:"100%",
-                    margin:"auto"
-                }
-            },
-                ...this.fillRow()
-            );
-            fragmentToDraw.appendChild(frag);
-            this.container.innerHTML = "";
-            this.container.appendChild(fragmentToDraw);
+            return new Promise(resolve => {
+                let rendFrag = document.createDocumentFragment();
+                this.displayContainer = h.div({
+                    className:"row-display",
+                    style:{
+                        margin: "auto",
+                        "text-align":"center"
+                    }
+                });
+                let row = this.fillRow();
+                this.initializeButtonsField(row);
+                rendFrag.appendChild(row);
+                rendFrag.appendChild(this.displayContainer);
+                this.container.innerHTML = "";
+                this.container.appendChild(rendFrag);
+                resolve(this.container);
+            });
         }
 
     };

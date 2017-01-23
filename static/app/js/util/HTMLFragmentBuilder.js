@@ -44,6 +44,7 @@ define(
 
         static span(...args){return this.makeElement("span", ...args);}
         static div(...args){return this.makeElement("div", ...args);}
+        static p(...args){return this.makeElement("p", ...args);}
     };
 
     return HTMLFragmentBuilder;

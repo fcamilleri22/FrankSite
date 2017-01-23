@@ -1,8 +1,40 @@
 define(["app/renderer","app/components/DisplayGrid"],
 function(renderer,DisplayGrid){
-    document.body.style.width = "100%";
-    // document.body.style.margin = "auto";
-    var grid = new DisplayGrid(document.body);
+
+    const items = [
+        {
+            "key":"Title1",
+            "value":"Content1"
+        },{
+            "key":"Title2",
+            "value":"Content2"
+        },{
+            "key":"Title3",
+            "value":"Content3"
+        },{
+            "key":"Title4",
+            "value":"Content4"
+        },{
+            "key":"Title5",
+            "value":"Content5"
+        },{
+            "key":"Title6",
+            "value":"Content6"
+        },{
+            "key":"Title7",
+            "value":"Content7"
+        },{
+            "key":"Title8",
+            "value":"Content8"
+        },{
+            "key":"Title9",
+            "value":"Content9"
+        },{
+            "key":"Title10",
+            "value":"Content10"
+        }
+    ];
+    var grid = new DisplayGrid(items, document.body);
     grid.render().then( () => console.log("object rendered"));
     // document.body.appendChild(grid.prop1);
 
