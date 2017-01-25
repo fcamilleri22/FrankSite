@@ -1,5 +1,5 @@
-define(["app/util/HTMLFragmentBuilder"],
-(h) => {
+define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
+(h, Button) => {
     const DisplayGridRow = class {
         //Variables declared but not instantiated here are instantiated after render.
         //items is an array of key value pairs
@@ -10,13 +10,7 @@ define(["app/util/HTMLFragmentBuilder"],
             this.items = items;
             this.buttonWidth = "200px";
             this.buttonSpacing = `${100/items.length}%`;
-            this.displayContainer;
-            this.buttons;
-        }
-
-        createDisplayGridButton(buttonText, buttonContent){
-            let thisClass = this;
-            let regStyle = {
+            this.regStyle = {
                 "text-align":"center",
                 margin:"auto",
                 padding:"10px",
@@ -25,8 +19,7 @@ define(["app/util/HTMLFragmentBuilder"],
                 "background-color": "#666666",
                 width: this.buttonWidth
             };
-
-            let hoverStyle = {
+            this.hoverStyle = {
                 "text-align":"center",
                 margin:"auto",
                 padding:"10px",
@@ -35,26 +28,47 @@ define(["app/util/HTMLFragmentBuilder"],
                 "background-color": "#777777",
                 width: this.buttonWidth
             };
+            this.displayContainer;
+            this.buttons = [];
+        }
 
-            return h.div({
-                className: "button-container",
+        buildDisplayGridButton(buttonText, buttonContent){
+            let spacingContainer =
+
+            h.div({
+                className: "button-spacing-container",
                 style:{
-                    display:"inline-block",
-                    margin:"auto",
+                    display: "inline-block",
+                    margin: "auto",
                     width: this.buttonSpacing
                 }
-            },
-                h.div({
-                    className: "button",
-                    style: regStyle,
-                    onmouseover: function(){Object.assign(this.style, hoverStyle);},
-                    onmouseleave: function(){Object.assign(this.style, regStyle);},
-                    onclick: function(){(thisClass.displayContainer.innerHTML == buttonContent) ? thisClass.clearDisplay() : thisClass.displayContainer.innerHTML = buttonContent;}
-                },
-                    buttonText
-                )
-            );
+            })
+
+            return new Button(buttonText, spacingContainer, this.regStyle, this.hoverStyle);
         }
+
+        // createDisplayGridButton(buttonText, buttonContent){
+        //     let thisClass = this;
+        //
+        //     return h.div({
+        //         className: "button-container",
+        //         style:{
+        //             display:"inline-block",
+        //             margin:"auto",
+        //             width: this.buttonSpacing
+        //         }
+        //     },
+        //         h.div({
+        //             className: "button",
+        //             style: regStyle,
+        //             onmouseover: function(){Object.assign(this.style, hoverStyle);},
+        //             onmouseleave: function(){Object.assign(this.style, regStyle);},
+        //             onclick: function(){(thisClass.displayContainer.innerHTML == buttonContent) ? thisClass.clearDisplay() : thisClass.displayContainer.innerHTML = buttonContent;}
+        //         },
+        //             buttonText
+        //         )
+        //     );
+        // }
 
         clearDisplay(){
             this.displayContainer.innerHTML="";

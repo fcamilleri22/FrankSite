@@ -6,10 +6,14 @@ define(["app/util/HTMLFragmentBuilder"],
             this.container = container;
             this.style = style;
             this.hoverStyle = hoverStyle ? hoverStyle : style;
-            this.id = container.id;
+            this.mouseover = false;
+            this.id = container.id; //dunno if we actually want this
             this.components;
         }
 
+        applyStyle(newStyle){Object.assign(this.style, newStyle);}
+
+        //TODO: after you get the display grid rows drawing again, make it so that
         render(){
             const thisClass = this;
             let component =
@@ -17,43 +21,28 @@ define(["app/util/HTMLFragmentBuilder"],
             h.div({
                 className: "button",
                 style: this.style,
-                onmouseover:    function(){Object.assign(this.style, thisClass.hoverStyle);},
-                onmouseleave:   function(){Object.assign(this.style, thisClass.style);},
+                onmouseover:    function(){
+                    thisClass.mouseover = true;
+                    this.applyStyle(thisClass.hoverStyle);
+                },
+                onmouseleave:   function(){
+                    thisClass.mouseover = false;
+                    this.applyStyle(thisClass.style);
+                },
             }, this.label);
 
             this.components = [component];
             this.container.appendChild(this.components);
         }
 
+        //update the DOM element after updating class.
         update(){
             this.components[0].innerHTML = this.label;
-            Object.assign(this.components[0], this.style);
+            this.mouseover == false ? this.applyStyle(this.style) : this.applyStyle(this.hoverStyle);
         }
 
         addClickListener(cb){
             this.components[0].addEventListener("click", cb);
-        }
-
-        createDisplayGridButton(buttonText, buttonContent){
-            let thisClass = this;
-            return h.div({
-                className: "button-container",
-                style:{
-                    display:"inline-block",
-                    margin:"auto",
-                    width: this.buttonSpacing
-                }
-            },
-                h.div({
-                    className: "button",
-                    style: thisClass.style,
-                    onmouseover: function(){Object.assign(this.style, thisClass.hoverStyle);},
-                    onmouseleave: function(){Object.assign(this.style, thisClass.style);},
-                    onclick: function(){(thisClass.displayContainer.innerHTML == buttonContent) ? thisClass.clearDisplay() : thisClass.displayContainer.innerHTML = buttonContent;}
-                },
-                    buttonText
-                )
-            );
         }
 
     };
