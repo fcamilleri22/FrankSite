@@ -10,6 +10,10 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
             this.items = items;
             this.buttonWidth = "200px";
             this.buttonSpacing = `${100/items.length}%`;
+            this.displayContainer;
+            this.buttons = [];
+
+            //TODO: Make these arguments
             this.regStyle = {
                 "text-align":"center",
                 margin:"auto",
@@ -28,8 +32,6 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
                 "background-color": "#777777",
                 width: this.buttonWidth
             };
-            this.displayContainer;
-            this.buttons = [];
         }
 
         buildDisplayGridButton(buttonText, buttonContent){
