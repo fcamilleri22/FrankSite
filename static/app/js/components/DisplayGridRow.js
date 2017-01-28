@@ -1,17 +1,30 @@
 define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
 (h, Button) => {
+
+    //private extentiion of Button
+    //simply a button with a container that points to some content.
+    class DisplayRowButton extends Button {
+        constructor(label, container, style, hoverStyle, content){
+            super(label, container, style, hoverStyle);
+            this.content = content;
+        }
+    }
+
     const DisplayGridRow = class {
         //Variables declared but not instantiated here are instantiated after render.
         //items is an array of key value pairs
         //container is an html element
         constructor(items, container){
             this.container = container;
-            this.id = container.id;
             this.items = items;
             this.buttonWidth = "200px";
             this.buttonSpacing = `${100/items.length}%`;
-            this.displayContainer;
-            this.buttons = [];
+            this.id = container.id;//dunno if we wanna do this
+
+            this.component;             //the whole html element
+            this.display;               //the display html element
+            this.buttonRowContainer;    //the div of button elements
+            this.buttons = [];          //the button class objects
 
             //TODO: Make these arguments
             this.regStyle = {
@@ -34,80 +47,80 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
             };
         }
 
-        buildDisplayGridButton(buttonText, buttonContent){
-            let spacingContainer =
+        activateOrHideDisplay(contentToDisplay){
+            if (!this.display){
+                return;
+            }
+            if (this.display.innerHTML == contentToDisplay){
+                this.clearDisplay();
+            } else{
+                this.setDisplay(contentToDisplay);
+            }
+        }
 
-            h.div({
+        buildDisplayGridButton(buttonText, buttonContent){
+
+            let spacingContainer = h.div({
                 className: "button-spacing-container",
                 style:{
                     display: "inline-block",
                     margin: "auto",
                     width: this.buttonSpacing
                 }
-            })
+            });
 
-            return new Button(buttonText, spacingContainer, this.regStyle, this.hoverStyle);
+            let button = new DisplayRowButton(buttonText, spacingContainer,
+                                    this.regStyle, this.hoverStyle,
+                                    buttonContent);
+            return button;
         }
 
-        // createDisplayGridButton(buttonText, buttonContent){
-        //     let thisClass = this;
-        //
-        //     return h.div({
-        //         className: "button-container",
-        //         style:{
-        //             display:"inline-block",
-        //             margin:"auto",
-        //             width: this.buttonSpacing
-        //         }
-        //     },
-        //         h.div({
-        //             className: "button",
-        //             style: regStyle,
-        //             onmouseover: function(){Object.assign(this.style, hoverStyle);},
-        //             onmouseleave: function(){Object.assign(this.style, regStyle);},
-        //             onclick: function(){(thisClass.displayContainer.innerHTML == buttonContent) ? thisClass.clearDisplay() : thisClass.displayContainer.innerHTML = buttonContent;}
-        //         },
-        //             buttonText
-        //         )
-        //     );
-        // }
-
-        clearDisplay(){
-            this.displayContainer.innerHTML="";
+        clearDisplay() {
+            if (!this.display){
+                return;
+            }
+            this.display.innerHTML="";
         }
 
-        fillRow(){
+        setDisplay(content) {
+            if (!this.display){
+                return;
+            }
+            this.display.innerHTML = content;
+        }
+
+        buildRow(){
             let buttonArray = [];
-            this.items.forEach(item => buttonArray.push(this.createDisplayGridButton(item.key, item.value)));
-            return h.div({
-                className:"row-buttons"
-            },
-                ...buttonArray
-            );
-        }
-
-        initializeButtonsField(row){
-            this.buttons = [];
-            row.childNodes.forEach(node => this.buttons.push(node.firstElementChild));
+            this.items.forEach(item => buttonArray.push(this.buildDisplayGridButton(item.key, item.value)));
+            return buttonArray;
         }
 
         render(){
             return new Promise(resolve => {
-                let rendFrag = document.createDocumentFragment();
-                this.displayContainer = h.div({
+                this.display = h.div({
                     className:"row-display",
                     style:{
                         margin: "auto",
                         "text-align":"center"
                     }
                 });
-                let row = this.fillRow();
-                this.initializeButtonsField(row);
-                rendFrag.appendChild(row);
-                rendFrag.appendChild(this.displayContainer);
+                this.buttonRowContainer = h.div({
+                    className:"row-buttons"
+                });
+                this.component = h.div(
+                    {className:"DisplayGridRow"},
+                    this.buttonRowContainer,
+                    this.display
+                );
+                this.buttons = this.buildRow();
+                this.buttons.forEach((button) => {
+                    this.buttonRowContainer.appendChild(button.container);
+                    button.render();
+                    button.addClickListener(()=>this.activateOrHideDisplay(button.content));
+                });
                 this.container.innerHTML = "";
-                this.container.appendChild(rendFrag);
-                resolve(this.container);
+                this.container.appendChild(this.component);
+                resolve(this);
             });
         }
 

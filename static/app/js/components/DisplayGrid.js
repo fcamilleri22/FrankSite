@@ -62,12 +62,11 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
                 let rowItr = 0;
                 this.model.forEach(itemRow => {
                     let row = this.initializeDisplayGridRow(itemRow, rowItr++);
+                    rows.appendChild(row.container);
                     rowPs.push(row.render());
                     this.components.push(row);
                 });
-                Promise.all(rowPs).then(renderedRows => {
-                    this.applyClearAllOtherDisplaysListener(this.components);
-                    renderedRows.forEach(row => rows.appendChild(row));
+                Promise.all(rowPs).then((buttons) => {
                     this.container.innerHTML = "";
                     this.container.appendChild(rows);
                     resolve(this.container);

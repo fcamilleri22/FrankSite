@@ -8,41 +8,44 @@ define(["app/util/HTMLFragmentBuilder"],
             this.hoverStyle = hoverStyle ? hoverStyle : style;
             this.mouseover = false;
             this.id = container.id; //dunno if we actually want this
-            this.components;
+
+            this.component; //the button HTML
         }
 
-        applyStyle(newStyle){Object.assign(this.style, newStyle);}
+        applyStyle(newStyle){
+            Object.assign(this.component.style, newStyle);
+        }
 
         //TODO: after you get the display grid rows drawing again, make it so that
         render(){
             const thisClass = this;
-            let component =
+            this.component =
 
             h.div({
                 className: "button",
                 style: this.style,
-                onmouseover:    function(){
-                    thisClass.mouseover = true;
+                onmouseover:    () => {
+                    this.mouseover = true;
                     this.applyStyle(thisClass.hoverStyle);
                 },
-                onmouseleave:   function(){
-                    thisClass.mouseover = false;
+                onmouseleave:   () => {
+                    this.mouseover = false;
                     this.applyStyle(thisClass.style);
                 },
             }, this.label);
-
-            this.components = [component];
-            this.container.appendChild(this.components);
+            this.container.innerHTML = "";
+            this.container.appendChild(this.component);
+            return this;
         }
 
         //update the DOM element after updating class.
         update(){
-            this.components[0].innerHTML = this.label;
+            this.component.innerHTML = this.label;
             this.mouseover == false ? this.applyStyle(this.style) : this.applyStyle(this.hoverStyle);
         }
 
         addClickListener(cb){
-            this.components[0].addEventListener("click", cb);
+            this.component.addEventListener("click", cb);
         }
 
     };
