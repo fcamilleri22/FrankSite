@@ -4,7 +4,21 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
     //private extentiion of Button
     //simply a button with a container that points to some content.
     class DisplayRowButton extends Button {
-        constructor(label, container, style, hoverStyle, content){
+        constructor(label, content, container){
+            let style = {
+                "text-align":"center",
+                margin:"auto",
+                padding:"10px",
+                border:"3px solid #33aadd",
+                "color":"#33aadd",
+                "background-color": "#666666",
+                width: "200px"
+            };
+            let hoverStyle = {
+                border:"3px solid #ff7e2a",
+                "color":"#ff7e2a",
+                "background-color": "#777777",
+            };
             super(label, container, style, hoverStyle);
             this.content = content;
         }
@@ -17,7 +31,6 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
         constructor(items, container){
             this.container = container;
             this.items = items;
-            this.buttonWidth = "200px";
             this.buttonSpacing = `${100/items.length}%`;
             this.id = container.id;//dunno if we wanna do this
 
@@ -25,26 +38,6 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
             this.display;               //the display html element
             this.buttonRowContainer;    //the div of button elements
             this.buttons = [];          //the button class objects
-
-            //TODO: Make these arguments
-            this.regStyle = {
-                "text-align":"center",
-                margin:"auto",
-                padding:"10px",
-                border:"3px solid #33aadd",
-                "color":"#33aadd",
-                "background-color": "#666666",
-                width: this.buttonWidth
-            };
-            this.hoverStyle = {
-                "text-align":"center",
-                margin:"auto",
-                padding:"10px",
-                border:"3px solid #ff7e2a",
-                "color":"#ff7e2a",
-                "background-color": "#777777",
-                width: this.buttonWidth
-            };
         }
 
         activateOrHideDisplay(contentToDisplay){
@@ -68,10 +61,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
                     width: this.buttonSpacing
                 }
             });
-
-            let button = new DisplayRowButton(buttonText, spacingContainer,
-                                    this.regStyle, this.hoverStyle,
-                                    buttonContent);
+            let button = new DisplayRowButton(buttonText, buttonContent, spacingContainer);
             return button;
         }
 
