@@ -1,10 +1,14 @@
-define(["app/renderer","app/components/DisplayGrid"],
-function(renderer,DisplayGrid){
+define(["app/components/DisplayGrid", "app/components/PageTitle", "app/util/HTMLFragmentBuilder"],
+function(DisplayGrid, PageTitle, h){
+
+    document.body.style.margin = "0px";
 
     const items = [
         {
-            "key":"Title1",
-            "value":"Content1"
+            "key":"Linux",
+            "value":`I've been using Linux-based operating systems and learning about them since I was in high school, starting with Fedora. At NYU,
+            I spent an inordinate amount of time hacking together my own custom distributions based on ubuntu-minimal, Debian, and Arch Linux.
+            Nowadays, I spend a lot of time in Amazon Linux based instances in AWS, and write code on machines preferrably running Ubuntu 16.04.`
         },{
             "key":"Title2",
             "value":"Content2"
@@ -34,8 +38,17 @@ function(renderer,DisplayGrid){
             "value":"Content10"
         }
     ];
-    var grid = new DisplayGrid(items, document.body);
-    grid.render().then( () => console.log("object rendered"));
+
+    const titleContainer = h.div({"style":{"background-color":"#444444"}});
+    const gridContainer = h.div({"style":{"background-color":"#666666"}});
+    const title = new PageTitle("Frank Camilleri","Full Stack Web Engineer, DevOps Professional", titleContainer);
+    const grid = new DisplayGrid(items, gridContainer);
+    Promise.all([title.render(), grid.render()]).then(()=>{
+        let frag = document.createDocumentFragment();
+        frag.appendChild(titleContainer);
+        frag.appendChild(gridContainer);
+        document.body.appendChild(frag);
+    });
     // document.body.appendChild(grid.prop1);
 
 
@@ -51,9 +64,6 @@ function(renderer,DisplayGrid){
     //     //     });
     //     // };
     //
-    //     // textButton("linux-btn",`I've been using Linux-based operating systems and learning about them since I was in high school, starting with Fedora. At NYU,
-    //     // I spent an inordinate amount of time hacking together my own custom distributions based on ubuntu-minimal, Debian, and Arch Linux.
-    //     // Nowadays, I spend a lot of time in Amazon Linux based instances in AWS, and write code on machines preferrably running Ubuntu 16.04.`);
     //     //
     //     // textButton("git-btn",`Over the last few years, I've become an expert at using Git, a distributed version control system. At Mass Exchange, I am
     //     // very often responsible for handling merges of new releases, figuring out where bugs were introduced and by whom, coordinating

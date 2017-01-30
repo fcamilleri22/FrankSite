@@ -7,8 +7,9 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
         constructor(items, container){
             this.container = container;
             this.items = items;
-            this.model = this.divideItemsIntoArrays(items, 3);
-            this.components = [];
+            this.grid = this.divideItemsIntoArrays(items, 2);
+            this.rows = [];
+            this.component;
         }
 
         divideItemsIntoArrays(objects, objectsPerArray){
@@ -33,43 +34,35 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
             return retArray;
         }
 
-        initializeDisplayGridRow(itemRow, idItr){
+        buildDisplayGridRow(itemRow, idItr){
             let rowContainer = h.div({id:`${this.container.className}row${idItr}`});
             return new DisplayGridRow(itemRow, rowContainer);
         }
 
-        clearAllOtherDisplays(excludedRowId){
-            console.log(excludedRowId);
-            let displaysToClear = this.components.filter(component => component.container.id != excludedRowId);
+        clearOtherDisplays(excludedRowId){
+            let displaysToClear = this.rows.filter(row => row.id != excludedRowId);
             displaysToClear.forEach(clearMe => clearMe.clearDisplay());
-        }
-
-        applyClearAllOtherDisplaysListener(components){
-            components.forEach(component => {
-                component.buttons.forEach(button => {
-                    button.addEventListener("click",
-                        () => this.clearAllOtherDisplays(component.id),
-                        false
-                    );
-                });
-            });
         }
 
         render(){
             return new Promise((resolve) => {
-                let rows = document.createDocumentFragment();
+                this.component = h.div({className:"DisplayGrid"});
                 let rowPs = [];
                 let rowItr = 0;
-                this.model.forEach(itemRow => {
-                    let row = this.initializeDisplayGridRow(itemRow, rowItr++);
-                    rows.appendChild(row.container);
+                this.grid.forEach(itemRow => {
+                    let row = this.buildDisplayGridRow(itemRow, rowItr++);
                     rowPs.push(row.render());
-                    this.components.push(row);
                 });
-                Promise.all(rowPs).then((buttons) => {
+                Promise.all(rowPs).then((rows) => {
+                    rows.forEach(row => {
+                        row.buttons.forEach(button =>
+                            button.addClickListener(()=>this.clearOtherDisplays(row.id)));
+                        this.component.appendChild(row.container);
+                        this.rows.push(row);
+                    });
                     this.container.innerHTML = "";
-                    this.container.appendChild(rows);
-                    resolve(this.container);
+                    this.container.appendChild(this.component);
+                    resolve(this);
                 });
             });
         }

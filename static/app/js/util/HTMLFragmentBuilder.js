@@ -27,7 +27,7 @@ define(
                 });
                 //If trailing content is only a single string, append it.
                 if (moreContent.length == 1 && typeof moreContent[0] == "string"){
-                    el.textContent = moreContent[0];
+                    el.innerHTML = moreContent[0];
                     return el;
                 }
             }
@@ -45,6 +45,14 @@ define(
         static span(...args){return this.makeElement("span", ...args);}
         static div(...args){return this.makeElement("div", ...args);}
         static p(...args){return this.makeElement("p", ...args);}
+        static h1(...args){return this.makeElement("h1", ...args);}
+        static h2(...args){return this.makeElement("h2", ...args);}
+        static h3(...args){return this.makeElement("h3", ...args);}
+        static h4(...args){return this.makeElement("h4", ...args);}
+        static h5(...args){return this.makeElement("h5", ...args);}
+        static h6(...args){return this.makeElement("h6", ...args);}
+        static br(){return this.makeElement("br");}
+
     };
 
     return HTMLFragmentBuilder;

@@ -12,7 +12,8 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
                 border:"3px solid #33aadd",
                 "color":"#33aadd",
                 "background-color": "#666666",
-                width: "200px"
+                width: "128px",
+                "font-family": "Lato"
             };
             let hoverStyle = {
                 border:"3px solid #ff7e2a",
@@ -41,14 +42,10 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
         }
 
         activateOrHideDisplay(contentToDisplay){
-            if (!this.display){
-                return;
-            }
-            if (this.display.innerHTML == contentToDisplay){
+            if (this.display && this.display.innerHTML == contentToDisplay){
                 this.clearDisplay();
-            } else{
-                this.setDisplay(contentToDisplay);
             }
+            this.setDisplay(contentToDisplay);
         }
 
         buildDisplayGridButton(buttonText, buttonContent){
@@ -65,18 +62,35 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
             return button;
         }
 
+        buildDisplay() {
+            return h.div({
+                className:"row-display",
+                style:{
+                    margin: "auto",
+                    "text-align":"center",
+                    color:"#cccccc",
+                    width:"80%",
+                    padding:"2em",
+                    "font-family":"Lato"
+                }
+            });
+        }
+
         clearDisplay() {
             if (!this.display){
                 return;
             }
-            this.display.innerHTML="";
+            this.component.removeChild(this.display);
+            delete this.display;
         }
 
         setDisplay(content) {
             if (!this.display){
-                return;
+                this.display = this.buildDisplay();
+                this.display.innerHTML = content;
+                this.component.appendChild(this.display);
             }
-            this.display.innerHTML = content;
+            else this.display.innerHTML = content;
         }
 
         buildRow(){
@@ -87,20 +101,12 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
 
         render(){
             return new Promise(resolve => {
-                this.display = h.div({
-                    className:"row-display",
-                    style:{
-                        margin: "auto",
-                        "text-align":"center"
-                    }
-                });
                 this.buttonRowContainer = h.div({
                     className:"row-buttons"
                 });
                 this.component = h.div(
                     {className:"DisplayGridRow"},
-                    this.buttonRowContainer,
-                    this.display
+                    this.buttonRowContainer
                 );
                 this.buttons = this.buildRow();
                 this.buttons.forEach((button) => {
