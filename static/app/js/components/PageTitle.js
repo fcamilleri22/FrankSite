@@ -12,10 +12,11 @@ define(["app/util/HTMLFragmentBuilder"],
             return h.h1({
                 id: "title",
                 style:{
-                    "text-align":"left",
+                    "text-align":"center",
                     width:"100%",
                     margin:"auto",
-                    color:"#bbbbbb"
+                    color:"#bbbbbb",
+                    "font-size": "3em"
                 }
             }, this.title);
         }
@@ -27,7 +28,8 @@ define(["app/util/HTMLFragmentBuilder"],
                     "text-align":"center",
                     margin:"auto",
                     color:"#bbbbbb",
-                    width:"100%"
+                    width:"100%",
+                    "font-size": "1.5em"
                 }
             }, this.subtitle);
         }
@@ -39,7 +41,7 @@ define(["app/util/HTMLFragmentBuilder"],
                     margin:"auto",
                     "padding-top":"5em",
                     "padding-bottom":"5em",
-                    width:"380px"
+                    width:"80%"
                 }
             },
             this.buildTitle(),

@@ -2,6 +2,7 @@ define(["app/components/DisplayGrid", "app/components/PageTitle", "app/util/HTML
 function(DisplayGrid, PageTitle, h){
 
     document.body.style.margin = "0px";
+    document.body.style["background-color"] = "#333333";
 
     const items = [
         {
@@ -39,8 +40,8 @@ function(DisplayGrid, PageTitle, h){
         }
     ];
 
-    const titleContainer = h.div({"style":{"background-color":"#444444"}});
-    const gridContainer = h.div({"style":{"background-color":"#666666"}});
+    const titleContainer = h.div({"style":{"background-color":"#333333"}});
+    const gridContainer = h.div({"style":{"background-color":"#999999"}});
     const title = new PageTitle("Frank Camilleri","Full Stack Web Engineer, DevOps Professional", titleContainer);
     const grid = new DisplayGrid(items, gridContainer);
     Promise.all([title.render(), grid.render()]).then(()=>{

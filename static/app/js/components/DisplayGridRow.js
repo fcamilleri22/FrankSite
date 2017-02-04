@@ -7,17 +7,17 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
         constructor(label, content, container){
             let style = {
                 "text-align":"center",
-                margin:"auto",
+                margin:"1em auto",
                 padding:"10px",
-                border:"3px solid #33aadd",
+                border:"3px solid #0088cc",
                 "color":"#33aadd",
-                "background-color": "#666666",
+                "background-color": "#333333",
                 width: "128px",
                 "font-family": "Lato"
             };
             let hoverStyle = {
                 border:"3px solid #ff7e2a",
-                "color":"#ff7e2a",
+                "color":"#fd5e0f",
                 "background-color": "#777777",
             };
             super(label, container, style, hoverStyle);

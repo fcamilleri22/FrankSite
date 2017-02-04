@@ -7,7 +7,7 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
         constructor(items, container){
             this.container = container;
             this.items = items;
-            this.grid = this.divideItemsIntoArrays(items, 2);
+            this.grid = this.divideItemsIntoArrays(items, 1);
             this.rows = [];
             this.component;
         }
