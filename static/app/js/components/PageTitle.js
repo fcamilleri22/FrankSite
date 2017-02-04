@@ -12,6 +12,7 @@ define(["app/util/HTMLFragmentBuilder"],
             return h.h1({
                 id: "title",
                 style:{
+                    "font-family": "Lato",
                     "text-align":"center",
                     width:"100%",
                     margin:"auto",
@@ -25,6 +26,7 @@ define(["app/util/HTMLFragmentBuilder"],
             return h.h3({
                 id: "subtitle",
                 style:{
+                    "font-family": "Lato",
                     "text-align":"center",
                     margin:"auto",
                     color:"#bbbbbb",
@@ -41,7 +43,7 @@ define(["app/util/HTMLFragmentBuilder"],
                     margin:"auto",
                     "padding-top":"5em",
                     "padding-bottom":"5em",
-                    width:"80%"
+                    width:"90%"
                 }
             },
             this.buildTitle(),

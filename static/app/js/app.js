@@ -3,7 +3,7 @@ define(["app/components/DisplayGrid", "app/components/PageTitle", "app/component
 function(DisplayGrid, PageTitle, ParagraphSection, h){
 
     document.body.style.margin = "0px";
-    document.body.style["background-color"] = "#333333";
+    document.body.style["background-color"] = "#2A2A2A";
 
     const items = [
         {
@@ -38,13 +38,22 @@ function(DisplayGrid, PageTitle, ParagraphSection, h){
         },{
             "key":"Title10",
             "value":"Content10"
+        },{
+            "key":"Title10",
+            "value":"Content10"
+        },{
+            "key":"Title10",
+            "value":"Content10"
+        },{
+            "key":"Title10",
+            "value":"Content10"
         }
     ];
 
-    const titleContainer = h.div({"style":{"background-color":"#333333"}});
-    const paragraphContainer = h.div({"style":{"background-color":"#999999"}});
-    const gridContainer = h.div({"style":{"background-color":"#333333"}});
-    const footerContainer = h.div({"style":{"background-color":"#999999"}});
+    const titleContainer = h.div({"style":{"background-color":"#222222"}});
+    const paragraphContainer = h.div({"style":{"background-color":"#2A2A2A"}});
+    const gridContainer = h.div({"style":{"background-color":"#222222"}});
+    const footerContainer = h.div({"style":{"background-color":"#2A2A2A"}});
     const title = new PageTitle("Frank Camilleri","Full Stack Web Engineer, DevOps Professional", titleContainer);
     const paragraph = new ParagraphSection(paragraphContainer);
     const grid = new DisplayGrid(items, gridContainer);

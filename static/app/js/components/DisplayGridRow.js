@@ -1,6 +1,7 @@
 define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
 (h, Button) => {
 
+
     //private extentiion of Button
     //simply a button with a container that points to some content.
     class DisplayRowButton extends Button {
@@ -12,7 +13,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
                 border:"3px solid #0088cc",
                 "color":"#33aadd",
                 "background-color": "#333333",
-                width: "128px",
+                width: "12em",
                 "font-family": "Lato"
             };
             let hoverStyle = {
@@ -24,7 +25,6 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
             this.content = content;
         }
     }
-
     const DisplayGridRow = class {
         //Variables declared but not instantiated here are instantiated after render.
         //items is an array of key value pairs
@@ -36,7 +36,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
             this.id = container.id;//dunno if we wanna do this
 
             this.component;             //the whole html element
-            this.display;               //the display html element
+            this.display = "";               //the display html element
             this.buttonRowContainer;    //the div of button elements
             this.buttons = [];          //the button class objects
         }
@@ -45,7 +45,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
             if (this.display && this.display.innerHTML == contentToDisplay){
                 this.clearDisplay();
             }
-            this.setDisplay(contentToDisplay);
+            else this.setDisplay(contentToDisplay);
         }
 
         buildDisplayGridButton(buttonText, buttonContent){
@@ -81,7 +81,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
                 return;
             }
             this.component.removeChild(this.display);
-            delete this.display;
+            this.display = undefined;
         }
 
         setDisplay(content) {

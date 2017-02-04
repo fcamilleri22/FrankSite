@@ -46,7 +46,7 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
 
         render(){
             return new Promise((resolve) => {
-                this.component = h.div({className:"DisplayGrid"});
+                this.component = h.div({className:"DisplayGrid", style:{padding:"1em 0em"}});
                 let rowPs = [];
                 let rowItr = 0;
                 this.grid.forEach(itemRow => {

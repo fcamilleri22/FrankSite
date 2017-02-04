@@ -7,7 +7,7 @@ define(["app/util/HTMLFragmentBuilder"],
             this.contents = [];
             this.boldStyle = {color:"#0088cc"};
             this.emphasisStyle = {};
-            this.underlineStyle = {};
+            this.underlineStyle = {color:"#0088cc"};
             this.component;
         }
 
@@ -18,7 +18,8 @@ define(["app/util/HTMLFragmentBuilder"],
             return h.h2({
                 class: "paragraph-title",
                 style: {
-
+                    "color": "#999999",
+                    "font-family": "Lato"
                 }
             }, formattedContent);
         }
@@ -30,7 +31,8 @@ define(["app/util/HTMLFragmentBuilder"],
             return h.p({
                 class: "paragraph",
                 style: {
-                    "em":{color:"#123123"}
+                    "color": "#999999",
+                    "font-family": "Lato"
                 }
             }, formattedContent);
         }
