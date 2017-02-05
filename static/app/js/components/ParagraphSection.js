@@ -19,7 +19,8 @@ define(["app/util/HTMLFragmentBuilder"],
                 class: "paragraph-title",
                 style: {
                     "color": "#aaaaaa",
-                    "font-family": "Lato"
+                    "font-family": "Lato",
+                    "text-shadow": "2px 2px 3px rgba(0,0,0,0.6)"
                 }
             }, formattedContent);
         }
@@ -32,7 +33,8 @@ define(["app/util/HTMLFragmentBuilder"],
                 class: "paragraph",
                 style: {
                     "color": "#cccccc",
-                    "font-family": "Lato"
+                    "font-family": "Lato",
+                    "text-shadow": "1px 1px 2px rgba(0,0,0,0.6)"
                 }
             }, formattedContent);
         }

@@ -76,9 +76,6 @@ function(DisplayGrid, PageTitle, ParagraphSection, h){
         },{
             "key":"Package Management",
             "value":"Content21"
-        },{
-            "key":"Monitoring / Telemetry",
-            "value":"Content21"
         }
     ];
 

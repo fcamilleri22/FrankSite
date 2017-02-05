@@ -17,7 +17,8 @@ define(["app/util/HTMLFragmentBuilder"],
                     width:"100%",
                     margin:"auto",
                     color:"#bbbbbb",
-                    "font-size": "3em"
+                    "font-size": "3em",
+                    "text-shadow": "2px 2px 3px rgba(0,0,0,0.6)"
                 }
             }, this.title);
         }
@@ -29,9 +30,11 @@ define(["app/util/HTMLFragmentBuilder"],
                     "font-family": "Lato",
                     "text-align":"center",
                     margin:"auto",
+                    "margin-top": "5px",
                     color:"#bbbbbb",
                     width:"100%",
-                    "font-size": "1.5em"
+                    "font-size": "1.25em",
+                    "text-shadow": "2px 2px 3px rgba(0,0,0,0.6)"
                 }
             }, this.subtitle);
         }
