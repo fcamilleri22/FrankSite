@@ -15,18 +15,20 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
         //Variables declared but not instantiated here are instantiated after render.
         //items is an array of key value pairs
         //container is an html element
-        constructor(items, container, componentStyles, buttonSpacing){
+        constructor(items, container, componentStyles, unfilledRowPadding){
             let {buttonStyles, spacingStyle, displayStyle, componentStyle} = componentStyles;
             this.buttonStyles = buttonStyles;
             this.spacingStyle = spacingStyle;
             this.displayStyle = displayStyle;
             this.componentStyle = componentStyle;
 
+            this.unfilledRowPadding = unfilledRowPadding;
+
             this.container = container;
             this.items = items;
             //this.buttonSpacing is either undefined, and computed as a percentage of items on the rows
             //or defined in order to space at a fixed length.
-            this.buttonSpacing = buttonSpacing ? buttonSpacing :`${100/items.length}%`;
+            this.buttonSpacing = `${100/items.length}%`;
             this.id = container.id;//dunno if we wanna do this
 
             this.component;             //the whole html element
@@ -42,9 +44,12 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
             else this.setDisplay(contentToDisplay);
         }
 
-        buildDisplayGridButton(buttonText, buttonContent){
+        buildDisplayGridButton(buttonText, buttonContent, unfilledRowPadding){
             //overwrite whatever width spacing might be involved for whatever reason for the spacing attr
             let spacingStyle = Object.assign(this.spacingStyle,{width:this.buttonSpacing});
+            if (unfilledRowPadding){
+                spacingStyle = Object.assign(spacingStyle,{"padding-left":unfilledRowPadding});
+            }
             let spacingContainer = h.div({
                 className: "button-spacing-container",
                 style: spacingStyle
@@ -79,7 +84,13 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
 
         buildRow(){
             let buttonArray = [];
-            this.items.forEach(item => buttonArray.push(this.buildDisplayGridButton(item.key, item.value)));
+            let rowItems = this.items;
+            if (this.unfilledRowPadding){
+                rowItems = rowItems.slice(1);
+                buttonArray.push(
+                    this.buildDisplayGridButton(this.items[0].key, this.items[0].value, this.unfilledRowPadding));
+            }
+            rowItems.forEach(item => buttonArray.push(this.buildDisplayGridButton(item.key, item.value)));
             return buttonArray;
         }
 

@@ -23,7 +23,7 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
 
 
         divideItemsIntoArrays(objects){
-            let objectsPerArray = this.calculateItemsPerRow(350);
+            let objectsPerArray = this.calculateItemsPerRow(700);
             //if we've got more items than designated per array,
             if (objects.length < objectsPerArray){
                 return [objects];//Return item array as singleton array of arrays
@@ -49,9 +49,9 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
             return Math.round(window.innerWidth/itemSizePx);
         }
 
-        buildDisplayGridRow(itemRow, idItr, spacingPx){
+        buildDisplayGridRow(itemRow, idItr, paddingPx){
             let rowContainer = h.div({id:`${this.container.className}row${idItr}`});
-            return new DisplayGridRow(itemRow, rowContainer, this.rowStyles, spacingPx);
+            return new DisplayGridRow(itemRow, rowContainer, this.rowStyles, paddingPx);
         }
 
         clearOtherDisplays(excludedRowId){
@@ -77,10 +77,9 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
                 let lastRow = this.grid[this.grid.length-1];
                 this.grid.forEach(itemRow => {
                     if (itemRow != lastRow) {
-                        console.log(lastRow);
                         buttonSpacing = `${100/itemRow.length}%`;
                     }
-                    let row = this.buildDisplayGridRow(itemRow, rowItr++, buttonSpacing);
+                    let row = this.buildDisplayGridRow(itemRow, rowItr++);
                     rowPs.push(row.render());
                 });
                 Promise.all(rowPs).then((rows) => {
