@@ -79,13 +79,58 @@ function(DisplayGrid, PageTitle, ParagraphSection, h){
         }
     ];
 
+    class HomePageDisplayGrid extends DisplayGrid {
+        constructor(items, gridContainer) {
+            let componentStyles = {}; //stles needed for grid object
+            componentStyles.rowStyles = {};
+            componentStyles.rowStyles.componentStyle = {};
+            componentStyles.componentStyle = {
+                padding:"1em 0em",
+                width: "80%",
+                margin:"auto"
+            };
+            componentStyles.rowStyles.buttonStyles = {
+                componentStyle:{
+                    "text-align":"center",
+                    margin:"1em auto",
+                    padding:"10px",
+                    border:"3px solid #0088cc",
+                    "color":"#33aadd",
+                    "background-color": "#333333",
+                    width: "11em",
+                    "font-family": "Lato",
+                    "text-shadow": "1px 1px 2px rgba(0,0,0,0.6)"
+                },
+                hoverStyle:{
+                    border:"3px solid #ff7e2a",
+                    "color":"#fd5e0f",
+                    "background-color": "#777777",
+                }
+            };
+            componentStyles.rowStyles.spacingStyle = {
+                display: "inline-block",
+                margin: "auto"
+            };
+            componentStyles.rowStyles.displayStyle = {
+                margin: "auto",
+                "text-align":"center",
+                color:"#cccccc",
+                "max-width":"80%",
+                padding:"2em",
+                "font-family":"Lato"
+            };
+
+            super(items, gridContainer, componentStyles);
+        }
+    }
+
     const titleContainer = h.div({"style":{"background-color":"#222222"}});
     const paragraphContainer = h.div({"style":{"background-color":"#2A2A2A"}});
     const gridContainer = h.div({"style":{"background-color":"#222222"}});
     const footerContainer = h.div({"style":{"background-color":"#2A2A2A"}});
     const title = new PageTitle("Frank Camilleri","Full Stack Web Engineer, DevOps Professional", titleContainer);
     const paragraph = new ParagraphSection(paragraphContainer);
-    const grid = new DisplayGrid(items, gridContainer);
+    const grid = new HomePageDisplayGrid(items, gridContainer);
     paragraph.addContent(
         `I am an <b><em>enthusiastic, passionate, and diligent</b></em> engineer with a <u><b><em>proven</u></b></em>
         ability to bring people together, orchestrate work for an <b><em>optimal return on your investment</b></em>,
@@ -99,7 +144,7 @@ function(DisplayGrid, PageTitle, ParagraphSection, h){
     );
     paragraph.addContent(
         `With my ability to <b><em>organize and automate</b></em> vital development processes such as deployment and testing,
-        I can even help <b><em>clear up costly bottlenecks</b></em> in your team's operating procedures that <b><em>hinder your
+        I can even help <b><em>clear up costly bottlenecks</b></em> in your team's workflow that <b><em>hinder your
         organization's ability</b></em> to release new functionality quickly, preventing your team from resorting
         to risky heroics, technical debt inducing hacks, and demoralizing long hours <b><em>to accomplish your business goals.</b></em></p>`
     );

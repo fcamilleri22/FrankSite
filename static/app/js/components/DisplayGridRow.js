@@ -5,23 +5,9 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
     //private extentiion of Button
     //simply a button with a container that points to some content.
     class DisplayRowButton extends Button {
-        constructor(label, content, container){
-            let style = {
-                "text-align":"center",
-                margin:"1em auto",
-                padding:"10px",
-                border:"3px solid #0088cc",
-                "color":"#33aadd",
-                "background-color": "#333333",
-                width: "11em",
-                "font-family": "Lato"
-            };
-            let hoverStyle = {
-                border:"3px solid #ff7e2a",
-                "color":"#fd5e0f",
-                "background-color": "#777777",
-            };
-            super(label, container, style, hoverStyle);
+        constructor(label, content, container, componentStyles){
+            let {componentStyle, hoverStyle} = componentStyles;
+            super(label, container, componentStyle, hoverStyle);
             this.content = content;
         }
     }
@@ -29,14 +15,22 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
         //Variables declared but not instantiated here are instantiated after render.
         //items is an array of key value pairs
         //container is an html element
-        constructor(items, container){
+        constructor(items, container, componentStyles, buttonSpacing){
+            let {buttonStyles, spacingStyle, displayStyle, componentStyle} = componentStyles;
+            this.buttonStyles = buttonStyles;
+            this.spacingStyle = spacingStyle;
+            this.displayStyle = displayStyle;
+            this.componentStyle = componentStyle;
+
             this.container = container;
             this.items = items;
-            this.buttonSpacing = `${100/items.length}%`;
+            //this.buttonSpacing is either undefined, and computed as a percentage of items on the rows
+            //or defined in order to space at a fixed length.
+            this.buttonSpacing = buttonSpacing ? buttonSpacing :`${100/items.length}%`;
             this.id = container.id;//dunno if we wanna do this
 
             this.component;             //the whole html element
-            this.display = "";               //the display html element
+            this.display = "";          //the display html element
             this.buttonRowContainer;    //the div of button elements
             this.buttons = [];          //the button class objects
         }
@@ -49,30 +43,20 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
         }
 
         buildDisplayGridButton(buttonText, buttonContent){
-
+            //overwrite whatever width spacing might be involved for whatever reason for the spacing attr
+            let spacingStyle = Object.assign(this.spacingStyle,{width:this.buttonSpacing});
             let spacingContainer = h.div({
                 className: "button-spacing-container",
-                style:{
-                    display: "inline-block",
-                    margin: "auto",
-                    width: this.buttonSpacing
-                }
+                style: spacingStyle
             });
-            let button = new DisplayRowButton(buttonText, buttonContent, spacingContainer);
+            let button = new DisplayRowButton(buttonText, buttonContent, spacingContainer, this.buttonStyles);
             return button;
         }
 
         buildDisplay() {
             return h.div({
                 className:"row-display",
-                style:{
-                    margin: "auto",
-                    "text-align":"center",
-                    color:"#cccccc",
-                    "max-width":"80%",
-                    padding:"2em",
-                    "font-family":"Lato"
-                }
+                style: this.displayStyle
             });
         }
 
@@ -104,8 +88,10 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
                 this.buttonRowContainer = h.div({
                     className:"row-buttons"
                 });
-                this.component = h.div(
-                    {className:"DisplayGridRow"},
+                this.component = h.div({
+                    className:"DisplayGridRow",
+                    style: this.componentStyle
+                },
                     this.buttonRowContainer
                 );
                 this.buttons = this.buildRow();

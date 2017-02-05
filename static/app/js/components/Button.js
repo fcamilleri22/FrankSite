@@ -16,7 +16,6 @@ define(["app/util/HTMLFragmentBuilder"],
             Object.assign(this.component.style, newStyle);
         }
 
-        //TODO: after you get the display grid rows drawing again, make it so that
         render(){
             const thisClass = this;
             this.component =
