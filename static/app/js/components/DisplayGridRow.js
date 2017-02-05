@@ -13,7 +13,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
                 border:"3px solid #0088cc",
                 "color":"#33aadd",
                 "background-color": "#333333",
-                width: "12em",
+                width: "11em",
                 "font-family": "Lato"
             };
             let hoverStyle = {
@@ -69,7 +69,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
                     margin: "auto",
                     "text-align":"center",
                     color:"#cccccc",
-                    width:"80%",
+                    "max-width":"80%",
                     padding:"2em",
                     "font-family":"Lato"
                 }

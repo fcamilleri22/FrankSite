@@ -6,13 +6,21 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
         //Variables declared but not instantiated here are instantiated after render.
         constructor(items, container){
             this.container = container;
-            this.items = items;
-            this.grid = this.divideItemsIntoArrays(items, 1);
+            this.items = items.sort((a, b) =>{
+                if (a.key > b.key) return 1;
+                if (a.key < b.key) return -1;
+                return 0;
+            });
+            this.grid = this.divideItemsIntoArrays(this.items);
             this.rows = [];
             this.component;
+            this.state = "Unrendered";
+            window.addEventListener("resize", ()=>this.respond());
         }
 
-        divideItemsIntoArrays(objects, objectsPerArray){
+
+        divideItemsIntoArrays(objects){
+            let objectsPerArray = this.calculateItemsPerRow(400);
             //if we've got more items than designated per array,
             if (objects.length < objectsPerArray){
                 return [objects];//Return item array as singleton array of arrays
@@ -34,6 +42,10 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
             return retArray;
         }
 
+        calculateItemsPerRow(itemSizePx){
+            return Math.round(window.innerWidth/itemSizePx);
+        }
+
         buildDisplayGridRow(itemRow, idItr){
             let rowContainer = h.div({id:`${this.container.className}row${idItr}`});
             return new DisplayGridRow(itemRow, rowContainer);
@@ -44,9 +56,22 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
             displaysToClear.forEach(clearMe => clearMe.clearDisplay());
         }
 
+        respond(){
+            this.grid = this.divideItemsIntoArrays(this.items);
+            if (this.state == "Rendered") return this.render();
+            else return Promise.resolve(this);
+        }
+
         render(){
             return new Promise((resolve) => {
-                this.component = h.div({className:"DisplayGrid", style:{padding:"1em 0em"}});
+                this.component = h.div({
+                    className:"DisplayGrid",
+                    style:{
+                        padding:"1em 0em",
+                        width: "80%",
+                        margin:"auto"
+                    }
+                });
                 let rowPs = [];
                 let rowItr = 0;
                 this.grid.forEach(itemRow => {
@@ -62,6 +87,7 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
                     });
                     this.container.innerHTML = "";
                     this.container.appendChild(this.component);
+                    this.state = "Rendered";
                     resolve(this);
                 });
             });

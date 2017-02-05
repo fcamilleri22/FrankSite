@@ -18,7 +18,7 @@ define(["app/util/HTMLFragmentBuilder"],
             return h.h2({
                 class: "paragraph-title",
                 style: {
-                    "color": "#999999",
+                    "color": "#aaaaaa",
                     "font-family": "Lato"
                 }
             }, formattedContent);
@@ -31,7 +31,7 @@ define(["app/util/HTMLFragmentBuilder"],
             return h.p({
                 class: "paragraph",
                 style: {
-                    "color": "#999999",
+                    "color": "#cccccc",
                     "font-family": "Lato"
                 }
             }, formattedContent);
