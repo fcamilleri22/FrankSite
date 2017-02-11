@@ -136,7 +136,7 @@ function(DisplayGrid, PageTitle, ParagraphSection, h){
             "key":"Excel Automation",
             "value":"Content18"
         },{
-            "key":"SOAP / REST / RPC APIs",
+            "key":"API Integration",
             "value":"Content19"
         },{
             "key":"Build Automation",
