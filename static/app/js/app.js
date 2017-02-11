@@ -31,7 +31,8 @@ function(DisplayGrid, PageTitle, ParagraphSection, h){
                 hoverStyle:{
                     border:"3px solid #ff7e2a",
                     "color":"#fd5e0f",
-                    "background-color": "#777777",
+                    "background-color": "#555555",
+                    "text-shadow": "0px 0px 0px rgba(0,0,0,0)"
                 }
             };
             componentStyles.rowStyles.spacingStyle = {
