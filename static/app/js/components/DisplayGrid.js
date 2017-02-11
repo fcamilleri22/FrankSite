@@ -23,7 +23,7 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
 
 
         divideItemsIntoArrays(objects){
-            let objectsPerArray = this.calculateItemsPerRow(700);
+            let objectsPerArray = this.calculateItemsPerRow(400);
             //if we've got more items than designated per array,
             if (objects.length < objectsPerArray){
                 return [objects];//Return item array as singleton array of arrays
