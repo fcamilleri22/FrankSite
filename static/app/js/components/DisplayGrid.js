@@ -54,9 +54,12 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
             return new DisplayGridRow(itemRow, rowContainer, this.rowStyles, paddingPx);
         }
 
-        clearOtherDisplays(excludedRowId){
-            let displaysToClear = this.rows.filter(row => row.id != excludedRowId);
-            displaysToClear.forEach(clearMe => clearMe.clearDisplay());
+        deactivateOtherRows(excludedRowId){
+            let rowsToDeactivate = this.rows.filter(row => row.id != excludedRowId);
+            rowsToDeactivate.forEach(clearMe => {
+                clearMe.clearDisplay();
+                clearMe.deactivateAllButtons();
+            });
         }
 
         respond(){
@@ -85,7 +88,7 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
                 Promise.all(rowPs).then((rows) => {
                     rows.forEach(row => {
                         row.buttons.forEach(button =>
-                            button.addClickListener(()=>this.clearOtherDisplays(row.id)));
+                            button.addClickListener(()=>this.deactivateOtherRows(row.id)));
                         this.component.appendChild(row.container);
                         this.rows.push(row);
                     });

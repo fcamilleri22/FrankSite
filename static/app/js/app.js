@@ -144,12 +144,6 @@ function(DisplayGrid, PageTitle, ParagraphSection, h){
         },{
             "key":"Package Management",
             "value":"Content21"
-        },{
-            "key":"Package Management",
-            "value":"Content21"
-        },{
-            "key":"Package Management",
-            "value":"Content21"
         }
     ];
     const gridContainer = h.div({"style":{"background-color":"#222222"}});

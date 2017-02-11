@@ -38,10 +38,18 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
         }
 
         activateOrHideDisplay(contentToDisplay){
+            this.buttons.forEach(button =>{
+                if (button.content != contentToDisplay) button.deactivate();
+                else button.activate();
+            });
             if (this.display && this.display.innerHTML == contentToDisplay){
                 this.clearDisplay();
             }
             else this.setDisplay(contentToDisplay);
+        }
+
+        deactivateAllButtons(){
+            this.buttons.forEach(button => button.deactivate());
         }
 
         buildDisplayGridButton(buttonText, buttonContent, unfilledRowPadding){
@@ -96,6 +104,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
 
         render(){
             return new Promise(resolve => {
+                const thisClass = this;
                 this.buttonRowContainer = h.div({
                     className:"row-buttons"
                 });
