@@ -2,14 +2,17 @@ define(["app/util/HTMLFragmentBuilder"],
 (h) => {
     const Button = class {
         constructor(label, container, style, hoverStyle){
-            this.label = label;
-            this.container = container;
-            this.style = style;
-            this.hoverStyle = hoverStyle ? hoverStyle : style;
-            this.mouseover = false;
-            this.id = container.id; //dunno if we actually want this
+            this.label = label;     //button text
+            this.container = container;     //div that button is placed in
+            this.style = style;             //default button styling
+            this.hoverStyle = hoverStyle ? hoverStyle : style;  //button style while active
+            this.id = container.id; //dunno if we actually want this -- Inherit ID of placed container.
 
-            this.component; //the button HTML
+            this.component; //the button HTML itself.
+
+            //State Controls
+            this.mouseover = false;     //is the user's mouse over the object?
+            this.active = false;        //is this button toggled?
         }
 
         applyStyle(newStyle){
@@ -29,7 +32,7 @@ define(["app/util/HTMLFragmentBuilder"],
                 },
                 onmouseleave:   () => {
                     this.mouseover = false;
-                    this.applyStyle(thisClass.style);
+                    if (this.active == false) this.applyStyle(thisClass.style);
                 },
             }, this.label);
             this.container.innerHTML = "";
