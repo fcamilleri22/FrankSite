@@ -19,6 +19,18 @@ define(["app/util/HTMLFragmentBuilder"],
             Object.assign(this.component.style, newStyle);
         }
 
+        activate(actFunc, ...actFuncArgs) {
+            this.active = true;
+            this.applyStyle(this.hoverStyle);
+            if (actFunc) actFunc(...actFuncArgs);
+        }
+
+        deactivate(deactFunc, ...deactFuncArgs) {
+            this.active = false;
+            if (this.mouseover == false) this.applyStyle(this.style);
+            if (deactFunc) deactFunc(...deactFuncArgs);
+        }
+
         render(){
             const thisClass = this;
             this.component =
