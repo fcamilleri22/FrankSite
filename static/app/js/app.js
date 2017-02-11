@@ -6,7 +6,6 @@ function(DisplayGrid, PageTitle, ParagraphSection, h){
     document.body.style["font-size"] = "20px";
     document.body.style["background-color"] = "#2A2A2A";
 
-
     class HomePageDisplayGrid extends DisplayGrid {
         constructor(items, gridContainer) {
             let componentStyles = {}; //stles needed for grid object
@@ -54,6 +53,7 @@ function(DisplayGrid, PageTitle, ParagraphSection, h){
 
     const titleContainer = h.div({"style":{"background-color":"#222222"}});
     const title = new PageTitle("Frank Camilleri","Full Stack Web Engineer, DevOps Professional", titleContainer);
+
     const paragraphContainer = h.div({"style":{"background-color":"#2A2A2A"}});
     const paragraph = new ParagraphSection(paragraphContainer);
     paragraph.addContent(
@@ -73,7 +73,8 @@ function(DisplayGrid, PageTitle, ParagraphSection, h){
         organization's ability</b></em> to release new functionality quickly, preventing your team from resorting
         to risky heroics, technical debt inducing hacks, and demoralizing long hours <b><em>to accomplish your business goals.</b></em></p>`
     );
-    const items = [
+
+    const gridItems = [
         {
             "key":"Linux",
             "value":`I've been using Linux-based operating systems and learning about them since I was in high school, starting with Fedora. At NYU,
@@ -152,7 +153,7 @@ function(DisplayGrid, PageTitle, ParagraphSection, h){
         }
     ];
     const gridContainer = h.div({"style":{"background-color":"#222222"}});
-    const grid = new HomePageDisplayGrid(items, gridContainer);
+    const grid = new HomePageDisplayGrid(gridItems, gridContainer);
     const footerContainer = h.div({"style":{"background-color":"#2A2A2A"}});
     Promise.all([title.render(), grid.render(), paragraph.render()]).then(()=>{
         let frag = document.createDocumentFragment();
