@@ -44,6 +44,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
             });
             if (this.display && this.display.innerHTML == contentToDisplay){
                 this.clearDisplay();
+                this.deactivateAllButtons();
             }
             else this.setDisplay(contentToDisplay);
         }
