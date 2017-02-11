@@ -17,10 +17,10 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
         //container is an html element
         constructor(items, container, componentStyles, unfilledRowPadding){
             let {buttonStyles, spacingStyle, displayStyle, componentStyle} = componentStyles;
-            this.buttonStyles = buttonStyles;
-            this.spacingStyle = spacingStyle;
-            this.displayStyle = displayStyle;
-            this.componentStyle = componentStyle;
+            this.buttonStyles =  buttonStyles;      //Styles passed down to buttons.
+            this.spacingStyle = spacingStyle;       //Style of container spacing divs where buttons are kept
+            this.displayStyle = displayStyle;       //Style of space where content is displayed
+            this.componentStyle = componentStyle;   //Style of top level grid CSS
 
             this.unfilledRowPadding = unfilledRowPadding;
 
