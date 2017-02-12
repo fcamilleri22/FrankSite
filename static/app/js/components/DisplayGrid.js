@@ -94,12 +94,7 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
                 });
                 let rowPs = [];
                 let rowItr = 0;
-                let buttonSpacing = 0;
-                let lastRow = this.grid[this.grid.length-1];
                 this.grid.forEach(itemRow => {
-                    if (itemRow != lastRow) {
-                        buttonSpacing = `${100/itemRow.length}%`;
-                    }
                     let row = this.buildDisplayGridRow(itemRow, rowItr++);
                     rowPs.push(row.render());
                 });
