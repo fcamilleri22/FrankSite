@@ -7,6 +7,7 @@ define(["app/util/HTMLFragmentBuilder"],
             this.buttonStyles = buttonStyles;
             this.spacingStyle = spacingStyle;
             this.componentStyle = componentStyle;
+            this.buttonSpacing = `${100/items.length}%`;
 
             //Data Objects
             this.items = items;
@@ -47,10 +48,6 @@ define(["app/util/HTMLFragmentBuilder"],
             let rowItems = this.items;
             rowItems.forEach(item => buttonArray.push(this.buildButton(item.key, item.value)));
             return buttonArray;
-        }
-
-        addClickListenerToAllButtons(cb){
-            this.buttons.forEach(button => button.addClickListener(cb));
         }
 
         render(){
