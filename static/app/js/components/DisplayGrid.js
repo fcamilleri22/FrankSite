@@ -1,7 +1,7 @@
 define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
 (h, DisplayGridRow) => {
 
-    const DisplayGrid = class {
+    return class DisplayGrid {
 
         //Variables declared but not instantiated here are instantiated after render.
         constructor(items, container, componentStyles){
@@ -17,6 +17,7 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
             this.grid = this.divideItemsIntoArrays(this.items);
             this.rows = [];
             this.component;
+
             //State Objects
             this.state = "Unrendered";
             this.initialWidth = window.innerWidth; //For blocking responsiveness when only length changed
@@ -126,5 +127,4 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
         }
 
     };
-    return DisplayGrid;
 });

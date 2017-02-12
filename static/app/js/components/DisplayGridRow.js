@@ -10,7 +10,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
             this.content = content;
         }
     }
-    const DisplayGridRow = class {
+    return class DisplayGridRow {
         //Variables declared but not instantiated here are instantiated after render.
         //items is an array of key value pairs
         //container is an html element
@@ -128,7 +128,5 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
                 resolve(this);
             });
         }
-
     };
-    return DisplayGridRow;
 });

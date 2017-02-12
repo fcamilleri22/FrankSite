@@ -1,6 +1,6 @@
 define(["app/util/HTMLFragmentBuilder"],
 (h) => {
-    const Button = class {
+    return class Button {
         constructor(label, container, componentStyles){
             let {componentStyle, hoverStyle} = componentStyles;
             this.label = label;     //button text
@@ -62,7 +62,5 @@ define(["app/util/HTMLFragmentBuilder"],
         addClickListener(cb){
             this.component.addEventListener("click", cb);
         }
-
     };
-    return Button;
 });
