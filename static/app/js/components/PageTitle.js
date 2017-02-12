@@ -1,5 +1,6 @@
-define(["app/util/HTMLFragmentBuilder"],
-(h) => {
+define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
+(h, Button) => {
+
     return class PageTitle {
         constructor(title, subtitle, container){
             this.title = title;
