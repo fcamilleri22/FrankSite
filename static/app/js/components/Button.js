@@ -2,18 +2,26 @@ define(["app/util/HTMLFragmentBuilder"],
 (h) => {
     return class Button {
         constructor(label, container, componentStyles){
+            //Style Objects
             let {componentStyle, hoverStyle} = componentStyles;
-            this.label = label;     //button text
-            this.container = container;     //div that button is placed in
             this.componentStyle = componentStyle;             //default button styling
             this.hoverStyle = hoverStyle ? hoverStyle : componentStyle;  //button style while hovered
-            this.id = container.id; //dunno if we actually want this -- Inherit ID of placed container.
 
-            this.component; //the button HTML itself.
+            //Data Objects
+            this.id = container.id;         //dunno if we actually want this -- Inherit ID of placed container.
+            this.label = label;             //button text
+
+            //JS Component Objects
+            //None.
+
+            //HTML Component Objects
+            this.container = container;     //div that button is placed in
+            this.component;                 //the button HTML itself.
 
             //State Controls
             this.mouseover = false;     //is the user's mouse over the object?
             this.active = false;        //is this button toggled?
+            this.state = "Unrendered";
         }
 
         applyStyle(newStyle){
@@ -50,6 +58,7 @@ define(["app/util/HTMLFragmentBuilder"],
             }, this.label);
             this.container.innerHTML = "";
             this.container.appendChild(this.component);
+            this.state = "Rendered";
             return this;
         }
 
