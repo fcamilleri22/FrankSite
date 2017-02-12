@@ -53,6 +53,10 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
             this.buttons.forEach(button => button.deactivate());
         }
 
+        getActiveButton(){
+            return this.buttons.filter(button => button.active == true)[0];
+        }
+
         buildDisplayGridButton(buttonText, buttonContent, unfilledRowPadding){
             //overwrite whatever width spacing might be involved for whatever reason for the spacing attr
             let spacingStyle = Object.assign(this.spacingStyle,{width:this.buttonSpacing});

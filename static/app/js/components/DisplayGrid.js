@@ -64,14 +64,29 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
             });
         }
 
+        getActiveButton(){
+            if (this.state != "Rendered") return; //buttons can't be active if they're not clickable
+            let activeButton = this.rows.reduce( (possibleButton, row) => {
+                return Object.assign(possibleButton, row.getActiveButton());
+            }, {});
+            if (activeButton == {}) return; // If no buttons active, then return nothing.
+            return activeButton;
+        }
+
         respond(){
             if (this.initialWidth == window.innerWidth) return; //Disregard if width didn't change.
             this.grid = this.divideItemsIntoArrays(this.items);
+            //this.initialWidth = window.innerWidth;  //surprisingly necessary.
             if (this.state == "Rendered") return this.render();
             else return Promise.resolve(this);
         }
 
         render(){
+            let activeButton;
+            let activeButtonRow;
+            if (this.state == "Rendered"){ //If we've already rendered this, and this is a respond render.
+                activeButton = this.getActiveButton();
+            }
             return new Promise((resolve) => {
                 this.component = h.div({
                     className:"DisplayGrid",
@@ -90,11 +105,18 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
                 });
                 Promise.all(rowPs).then((rows) => {
                     rows.forEach(row => {
-                        row.buttons.forEach(button =>
-                            button.addClickListener(()=>this.deactivateOtherRows(row.id)));
+                        row.buttons.forEach(button => {
+                            if (activeButton && button.label == activeButton.label && button.content == activeButton.content){
+                                activeButtonRow = row;
+                            }
+                            button.addClickListener(()=>this.deactivateOtherRows(row.id));
+                        });
                         this.component.appendChild(row.container);
                         this.rows.push(row);
                     });
+                    if (activeButtonRow){
+                        activeButtonRow.activateOrHideDisplay(activeButton.content);
+                    }
                     this.container.innerHTML = "";
                     this.container.appendChild(this.component);
                     this.state = "Rendered";
