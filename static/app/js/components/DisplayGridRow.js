@@ -14,14 +14,12 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
         //Variables declared but not instantiated here are instantiated after render.
         //items is an array of key value pairs
         //container is an html element
-        constructor(items, container, componentStyles, unfilledRowPadding){
+        constructor(items, container, componentStyles){
             let {buttonStyles, spacingStyle, displayStyle, componentStyle} = componentStyles;
             this.buttonStyles =  buttonStyles;      //Styles passed down to buttons.
             this.spacingStyle = spacingStyle;       //Style of container spacing divs where buttons are kept
             this.displayStyle = displayStyle;       //Style of space where content is displayed
             this.componentStyle = componentStyle;   //Style of top level grid CSS
-
-            this.unfilledRowPadding = unfilledRowPadding;
 
             this.container = container;
             this.items = items;
@@ -56,12 +54,9 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
             return this.buttons.filter(button => button.active == true)[0];
         }
 
-        buildDisplayGridButton(buttonText, buttonContent, unfilledRowPadding){
+        buildDisplayGridButton(buttonText, buttonContent){
             //overwrite whatever width spacing might be involved for whatever reason for the spacing attr
             let spacingStyle = Object.assign(this.spacingStyle,{width:this.buttonSpacing});
-            if (unfilledRowPadding){
-                spacingStyle = Object.assign(spacingStyle,{"padding-left":unfilledRowPadding});
-            }
             let spacingContainer = h.div({
                 className: "button-spacing-container",
                 style: spacingStyle
@@ -97,11 +92,6 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
         buildRow(){
             let buttonArray = [];
             let rowItems = this.items;
-            if (this.unfilledRowPadding){
-                rowItems = rowItems.slice(1);
-                buttonArray.push(
-                    this.buildDisplayGridButton(this.items[0].key, this.items[0].value, this.unfilledRowPadding));
-            }
             rowItems.forEach(item => buttonArray.push(this.buildDisplayGridButton(item.key, item.value)));
             return buttonArray;
         }
