@@ -13,7 +13,7 @@ function(DisplayGrid, PageTitle, ParagraphSection, h){
             componentStyles.rowStyles.componentStyle = {};
             componentStyles.componentStyle = {
                 padding:"1em 0em",
-                width: "80%",
+                width: "90%",
                 margin:"auto"
             };
             componentStyles.rowStyles.buttonStyles = {
@@ -41,9 +41,9 @@ function(DisplayGrid, PageTitle, ParagraphSection, h){
             };
             componentStyles.rowStyles.displayStyle = {
                 margin: "auto",
-                "text-align":"center",
+                "text-align":"left",
                 color:"#cccccc",
-                "max-width":"80%",
+                "max-width":"90%",
                 padding:"2em",
                 "font-family":"Lato"
             };
