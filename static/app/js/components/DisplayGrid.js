@@ -2,7 +2,6 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
 (h, DisplayGridRow) => {
 
     return class DisplayGrid {
-
         //Variables declared but not instantiated here are instantiated after render.
         constructor(items, container, componentStyles){
             let {rowStyles, componentStyle} = componentStyles;
