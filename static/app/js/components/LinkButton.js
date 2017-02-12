@@ -8,25 +8,8 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
 
         //overridden Render
         render(){
-            const thisClass = this;
-            this.component =
-
-            h.div({
-                className: "button",
-                style: this.style,
-                onmouseover:    () => {
-                    this.mouseover = true;
-                    this.applyStyle(thisClass.hoverStyle);
-                },
-                onmouseleave:   () => {
-                    this.mouseover = false;
-                    if (this.active == false) this.applyStyle(thisClass.style);
-                },
-                onclick: ()=>{window.location.href = this.link;}
-            }, this.label);
-            this.container.innerHTML = "";
-            this.container.appendChild(this.component);
-            return this;
+            super.render();
+            this.component.onclick = () => window.location.href = this.link;
         }
 
         update(){
