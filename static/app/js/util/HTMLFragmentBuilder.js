@@ -51,7 +51,10 @@ define(
         static h4(...args){return this.makeElement("h4", ...args);}
         static h5(...args){return this.makeElement("h5", ...args);}
         static h6(...args){return this.makeElement("h6", ...args);}
+        static a(...args){return this.makeElement("a", ...args);}
         static br(){return this.makeElement("br");}
+
+
 
     };
 
