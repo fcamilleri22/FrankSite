@@ -17,7 +17,9 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
             this.grid = this.divideItemsIntoArrays(this.items);
             this.rows = [];
             this.component;
+            //State Objects
             this.state = "Unrendered";
+            this.initialWidth = window.innerWidth; //For blocking responsiveness when only length changed
             window.addEventListener("resize", ()=>this.respond());
         }
 
@@ -63,6 +65,7 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
         }
 
         respond(){
+            if (this.initialWidth == window.innerWidth) return; //Disregard if width didn't change.
             this.grid = this.divideItemsIntoArrays(this.items);
             if (this.state == "Rendered") return this.render();
             else return Promise.resolve(this);
