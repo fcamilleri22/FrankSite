@@ -9,8 +9,8 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
         //overridden Render
         render(){
             const thisClass = this;
+            this.component =
 
-            let buttonDiv =
             h.div({
                 className: "button",
                 style: this.style,
@@ -22,13 +22,8 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
                     this.mouseover = false;
                     if (this.active == false) this.applyStyle(thisClass.style);
                 },
+                onclick: ()=>{window.location.href = this.link;}
             }, this.label);
-
-            this.component =
-            h.a({
-                href: this.link
-            }, buttonDiv);
-
             this.container.innerHTML = "";
             this.container.appendChild(this.component);
             return this;
