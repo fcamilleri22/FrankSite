@@ -1,8 +1,6 @@
 define(
 () => {
-    //It only builds components, I swear!
-    //Maybe it should be paired with an object that maintains states...
-    //TODO: Handle Style!
+
     const HTMLFragmentBuilder = class {
 
         static makeElement(type, propsOrContent, ...moreContent){
@@ -53,8 +51,6 @@ define(
         static h6(...args){return this.makeElement("h6", ...args);}
         static a(...args){return this.makeElement("a", ...args);}
         static br(){return this.makeElement("br");}
-
-
 
     };
 
