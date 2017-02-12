@@ -6,8 +6,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
     //simply a button with a container that points to some content.
     class DisplayRowButton extends Button {
         constructor(label, content, container, componentStyles){
-            let {componentStyle, hoverStyle} = componentStyles;
-            super(label, container, componentStyle, hoverStyle);
+            super(label, container, componentStyles);
             this.content = content;
         }
     }

@@ -8,7 +8,8 @@ define(["app/util/HTMLFragmentBuilder", "app/components/LinkButton"],
             this.subtitle = subtitle;
             this.container = container;
             this.component;
-            this.buttonStyle = {
+            this.buttonStyles = {};
+            this.buttonStyles.componentStyle = {
                 "text-align":"center",
                 margin:"1em auto",
                 padding:"10px",
@@ -19,7 +20,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/LinkButton"],
                 "font-family": "Lato",
                 "text-shadow": "1px 1px 2px rgba(0,0,0,0.6)"
             };
-            this.buttonHoverStyle = {
+            this.buttonStyles.hoverStyle = {
                 border:"3px solid #ff7e2a",
                 "color":"#fd5e0f",
                 "background-color": "#555555",
@@ -60,11 +61,11 @@ define(["app/util/HTMLFragmentBuilder", "app/components/LinkButton"],
 
         buildLinkButtons(){
             let gitHubContainer = h.div({style:{margin:"auto"}});
-            let gitHub = new Button("GitHub", gitHubContainer, "https://github.com/fcamilleri22", this.buttonStyle, this.buttonHoverStyle);
+            let gitHub = new Button("GitHub", gitHubContainer, "https://github.com/fcamilleri22", this.buttonStyles);
             let linkedInContainer = h.div({style:{margin:"auto"}});
-            let linkedIn = new Button("LinkedIn", linkedInContainer, "https://linkedin.com/in/fcamilleri22", this.buttonStyle, this.buttonHoverStyle);
+            let linkedIn = new Button("LinkedIn", linkedInContainer, "https://linkedin.com/in/fcamilleri22", this.buttonStyles);
             let downloadResumeContainer = h.div({style:{margin:"auto"}});
-            let downloadResume = new Button("Resume (PDF)", downloadResumeContainer, "",this.buttonStyle, this.buttonHoverStyle);
+            let downloadResume = new Button("Resume (PDF)", downloadResumeContainer, "", this.buttonStyles);
             gitHub.render();
             linkedIn.render();
             downloadResume.render();

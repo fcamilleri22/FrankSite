@@ -1,11 +1,12 @@
 define(["app/util/HTMLFragmentBuilder"],
 (h) => {
     const Button = class {
-        constructor(label, container, style, hoverStyle){
+        constructor(label, container, componentStyles){
+            let {componentStyle, hoverStyle} = componentStyles;
             this.label = label;     //button text
             this.container = container;     //div that button is placed in
-            this.style = style;             //default button styling
-            this.hoverStyle = hoverStyle ? hoverStyle : style;  //button style while active
+            this.componentStyle = componentStyle;             //default button styling
+            this.hoverStyle = hoverStyle ? hoverStyle : componentStyle;  //button style while hovered
             this.id = container.id; //dunno if we actually want this -- Inherit ID of placed container.
 
             this.component; //the button HTML itself.
@@ -27,7 +28,7 @@ define(["app/util/HTMLFragmentBuilder"],
 
         deactivate(deactFunc, ...deactFuncArgs) {
             this.active = false;
-            if (this.mouseover == false) this.applyStyle(this.style);
+            if (this.mouseover == false) this.applyStyle(this.componentStyle);
             if (deactFunc) deactFunc(...deactFuncArgs);
         }
 
@@ -37,14 +38,14 @@ define(["app/util/HTMLFragmentBuilder"],
 
             h.div({
                 className: "button",
-                style: this.style,
+                style: this.componentStyle,
                 onmouseover:    () => {
                     this.mouseover = true;
                     this.applyStyle(thisClass.hoverStyle);
                 },
                 onmouseleave:   () => {
                     this.mouseover = false;
-                    if (this.active == false) this.applyStyle(thisClass.style);
+                    if (this.active == false) this.applyStyle(thisClass.componentStyle);
                 },
             }, this.label);
             this.container.innerHTML = "";
@@ -55,7 +56,7 @@ define(["app/util/HTMLFragmentBuilder"],
         //update the DOM element after updating class.
         update(){
             this.component.innerHTML = this.label;
-            this.mouseover == false ? this.applyStyle(this.style) : this.applyStyle(this.hoverStyle);
+            this.mouseover == false ? this.applyStyle(this.componentStyle) : this.applyStyle(this.hoverStyle);
         }
 
         addClickListener(cb){
