@@ -109,7 +109,6 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
 
         render(){
             return new Promise(resolve => {
-                const thisClass = this;
                 this.buttonRowContainer = h.div({
                     className:"row-buttons"
                 });
