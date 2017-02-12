@@ -1,7 +1,7 @@
 define(["app/util/HTMLFragmentBuilder", "app/components/Button"],
 (h, Button) => {
     return class LinkButton extends Button {
-        constructor(label, container, link, componentStyles){
+        constructor(label, link, container, componentStyles){
             super(label, container, componentStyles);
             this.link = link;
         }

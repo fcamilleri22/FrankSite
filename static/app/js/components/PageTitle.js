@@ -61,11 +61,11 @@ define(["app/util/HTMLFragmentBuilder", "app/components/LinkButton"],
 
         buildLinkButtons(){
             let gitHubContainer = h.div({style:{margin:"auto"}});
-            let gitHub = new Button("GitHub", gitHubContainer, "https://github.com/fcamilleri22", this.buttonStyles);
+            let gitHub = new Button("GitHub", "https://github.com/fcamilleri22", gitHubContainer, this.buttonStyles);
             let linkedInContainer = h.div({style:{margin:"auto"}});
-            let linkedIn = new Button("LinkedIn", linkedInContainer, "https://linkedin.com/in/fcamilleri22", this.buttonStyles);
+            let linkedIn = new Button("LinkedIn", "https://linkedin.com/in/fcamilleri22", linkedInContainer, this.buttonStyles);
             let downloadResumeContainer = h.div({style:{margin:"auto"}});
-            let downloadResume = new Button("Resume (PDF)", downloadResumeContainer, "", this.buttonStyles);
+            let downloadResume = new Button("Resume (PDF)", "",  downloadResumeContainer, this.buttonStyles);
             gitHub.render();
             linkedIn.render();
             downloadResume.render();
