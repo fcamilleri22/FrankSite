@@ -43,7 +43,7 @@ function(DisplayGrid, PageTitle, ParagraphSection, h){
                 margin: "auto",
                 "text-align":"left",
                 color:"#cccccc",
-                "max-width":"90%",
+                //"max-width":"90%",
                 padding:"2em",
                 "font-family":"Lato"
             };

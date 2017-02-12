@@ -86,7 +86,7 @@ define(["app/util/HTMLFragmentBuilder"],
                     padding:"1em",
                     margin:"auto",
                     "text-align": "left",
-                    width: "80%"
+                    width: "85%"
                 }
             },
             ...this.buildSectionContent());
