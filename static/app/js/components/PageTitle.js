@@ -15,7 +15,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/LinkButton"],
                 border:"3px solid #0088cc",
                 "color":"#33aadd",
                 "background-color": "#333333",
-                width: "220px",
+                width: "11em",
                 "font-family": "Lato",
                 "text-shadow": "1px 1px 2px rgba(0,0,0,0.6)"
             };
