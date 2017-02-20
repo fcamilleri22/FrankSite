@@ -11,6 +11,7 @@ define(["app/util/HTMLFragmentBuilder"],
 
             //Data Objects
             this.items = items;
+            this.id = container.id;
 
             //JS Component Objects
             this.button = buttonType;       //any Frank-style button class should work
