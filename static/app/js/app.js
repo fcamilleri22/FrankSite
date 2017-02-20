@@ -154,8 +154,8 @@ function(DisplayGrid, PageTitle, ParagraphSection, h){
         let frag = document.createDocumentFragment();
         frag.appendChild(titleContainer);
         frag.appendChild(paragraphContainer);
-        frag.appendChild(footerContainer);
         frag.appendChild(gridContainer);
+        frag.appendChild(footerContainer);
         document.body.appendChild(frag);
     });
 });
