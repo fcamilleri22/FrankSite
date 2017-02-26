@@ -51,9 +51,9 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGridRow"],
             return Math.round(window.innerWidth/itemSizePx);
         }
 
-        buildDisplayGridRow(itemRow, idItr, paddingPx){
+        buildDisplayGridRow(itemRow, idItr){
             let rowContainer = h.div({id:`${this.container.className}row${idItr}`});
-            return new DisplayGridRow(itemRow, rowContainer, this.rowStyles, paddingPx);
+            return new DisplayGridRow(itemRow, rowContainer, this.rowStyles);
         }
 
         deactivateOtherRows(excludedRowId){
