@@ -60,54 +60,23 @@ define(["app/util/HTMLFragmentBuilder", "app/components/LinkButton", "app/compon
             }, this.subtitle);
         }
 
-        buildLinkButtons(){
-            let gitHubContainer = h.div({
-                style:{
-                    width: "10%",
-                    "background-color":"#FFFFFF"
-                }
-            });
-            let linkedInContainer = h.div({
-                style:{
-                    width: "10%",
-                    "background-color":"#FFFFFF"
-                }
-            });
-            let downloadResumeContainer = h.div({
-                style:{
-                    width: "10%",
-                    "background-color":"#FFFFFF"
-                }
-            });
-            let gitHub = new Button("GitHub", "https://github.com/fcamilleri22", gitHubContainer, this.buttonStyles);
-            let linkedIn = new Button("LinkedIn", "https://linkedin.com/in/fcamilleri22", linkedInContainer, this.buttonStyles);
-            let downloadResume = new Button("Resume (PDF)", "",  downloadResumeContainer, this.buttonStyles);
-            gitHub.render();
-            linkedIn.render();
-            downloadResume.render();
-            return h.div({
-                style:{
-                    width:"100%",
-                    margin:"auto"
-                }},
-                gitHubContainer,
-                linkedInContainer,
-                downloadResumeContainer
-            );
-        }
-
         buildLinkRow(){
-            let gitHubContainer = h.div({style: {margin:"auto"}});
-            let linkedInContainer = h.div({style: {margin:"auto"}});
-            let pdfContainer = h.div({style: {margin:"auto"}});
+            let containerStyle = {style:{width:"2em", display: "inline-block", margin:"1em"}}
+            let gitHubContainer = h.div(containerStyle);
+            let linkedInContainer = h.div(containerStyle);
+            let pdfContainer = h.div(containerStyle);
             let gitHubLink = new IconLink("github", "https://github.com/fcamilleri22", gitHubContainer);
-            let linkedInLink = new IconLink("linkedin", "https://github.com/fcamilleri22", linkedInContainer);
+            let linkedInLink = new IconLink("linkedin", "https://linkedin.com/in/fcamilleri22", linkedInContainer);
             let pdfLink = new IconLink("file-pdf-o", "https://github.com/fcamilleri22", pdfContainer);
             gitHubLink.render()
             linkedInLink.render();
             pdfLink.render();
             return h.div({
                 className:"Links",
+                style:{
+                    "text-align": "center",
+                    width:"100%"
+                }
             },
                 gitHubContainer,
                 linkedInContainer,
@@ -120,8 +89,8 @@ define(["app/util/HTMLFragmentBuilder", "app/components/LinkButton", "app/compon
                 className: "PageTitle",
                 style:{
                     margin:"auto",
-                    "padding-top":"5em",
-                    "padding-bottom":"1em",
+                    "padding-top":"3em",
+                    "padding-bottom":"2em",
                     width:"90%"
                 }
             },
