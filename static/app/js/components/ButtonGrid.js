@@ -64,7 +64,30 @@ define(["app/util/HTMLFragmentBuilder"],
             else return Promise.resolve(this);
         }
 
-        render(){}
+        render(){
+            return new Promise(resolve => {
+                this.component = h.div({
+                    className: "ButtonGrid",
+                    style: this.componentStyle
+                });
+                let rowPs = [];
+                let rowItr = 0;
+                this.grid.forEach(itemRow => {
+                    let row = this.buildButtonRow(itemRow, rowItr++);
+                    rowPs.push(row.render());
+                });
+                Promise.all(rowPs).then(rows =>{
+                    rows.forEach(row => {
+                        this.component.appendChild(row.container);
+                        this.rows.push(row);
+                    });
+                });
+                this.container.innerHTML = "";
+                this.container.appendChild(this.component);
+                this.state = "Rendered";
+                resolve(this);
+            });
+        }
 
     };
 });
