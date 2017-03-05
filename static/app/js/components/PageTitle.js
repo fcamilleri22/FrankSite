@@ -82,7 +82,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/LinkButton"],
 
         buildComponent(){
             return h.div({
-                id: "PageTitle",
+                class: "PageTitle",
                 style:{
                     margin:"auto",
                     "padding-top":"5em",
