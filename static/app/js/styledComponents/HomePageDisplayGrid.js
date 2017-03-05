@@ -20,7 +20,8 @@ define(["app/components/DisplayGrid"],
                     "background-color": "#333333",
                     width: "11em",
                     "font-family": "Lato",
-                    "text-shadow": "1px 1px 2px rgba(0,0,0,0.6)"
+                    "text-shadow": "1px 1px 2px rgba(0,0,0,0.6)",
+                    cursor: "pointer"
                 },
                 hoverStyle:{
                     border:"3px solid #ff7e2a",
