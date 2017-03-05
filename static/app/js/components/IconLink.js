@@ -12,20 +12,21 @@ define(["app/util/HTMLFragmentBuilder"],
         }
 
         render(){
-            return new Promise (resolve => {
-                let iconClass = `fa fa-${this.icon} fa-fw`;
-                this.component =
-                h.a({
-                    href: this.link
-                },
-                    h.i({
-                        class: iconClass
-                    })
-                );
-                this.container.innerHTML = "";
-                this.container.appendChild(this.component);
-                resolve(this);
-            });
+            let iconClass = `fa fa-${this.icon} fa-2x`;
+            this.component =
+            h.a({
+                href: this.link,
+                style:{
+                    color:"#33aadd"
+                }
+            },
+                h.i({
+                    className: iconClass
+                })
+            );
+            this.container.innerHTML = "";
+            this.container.appendChild(this.component);
+            return this;
         }
     };
 });
