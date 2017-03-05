@@ -92,8 +92,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/LinkButton"],
                 }
             },
             this.buildTitle(),
-            this.buildSubtitle(),
-            this.buildLinkButtons());
+            this.buildSubtitle());
         }
 
         render(){
