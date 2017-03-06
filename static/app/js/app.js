@@ -31,7 +31,7 @@ function(DisplayGrid, PageTitle, ParagraphSection, h, HomePageDisplayGrid){
 
 
     const gridContainer = h.div({"style":{"background-color":"#222222"}});
-    const grid = new HomePageDisplayGrid(gridContainer);
+    const grid = new HomePageDisplayGrid(gridContainer, "What I can do for your organization: ");
     const footerContainer = h.div({"style":{"background-color":"#2A2A2A"}});
     Promise.all([title.render(), grid.render(), paragraph.render()]).then(()=>{
         let frag = document.createDocumentFragment();

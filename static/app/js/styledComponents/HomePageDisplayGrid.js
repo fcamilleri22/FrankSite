@@ -1,7 +1,7 @@
-define(["app/components/DisplayGrid"],
-(DisplayGrid) => {
+define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
+(h, DisplayGrid) => {
     return class HomePageDisplayGrid extends DisplayGrid {
-        constructor(gridContainer) {
+        constructor(gridContainer, title) {
             let componentStyles = {}; //styles needed for grid object
             componentStyles.rowStyles = {};
             componentStyles.rowStyles.componentStyle = {};
@@ -117,6 +117,27 @@ define(["app/components/DisplayGrid"],
             ];
 
             super(items, gridContainer, componentStyles);
+            this.title = title;
+        }
+
+        buildTitle(){
+            return h.h2({
+                class: "grid-title",
+                style: {
+                    "color": "#aaaaaa",
+                    "font-family": "Lato",
+                    "text-shadow": "2px 2px 3px rgba(0,0,0,0.6)",
+                    "margin":"auto",
+                    "padding-top": "1em",
+                    "width":"85%"
+                }
+            }, this.title);
+        }
+
+        render(){
+            super.render().then((grid)=>{
+                grid.container.insertAdjacentElement("afterbegin", this.buildTitle());
+            });
         }
     };
 });
