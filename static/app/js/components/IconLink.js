@@ -2,12 +2,13 @@ define(["app/util/HTMLFragmentBuilder"],
 (h) => {
     //Requires Bootstrap/FontAwesome
     return class IconLink{
-        constructor(fontAwesomeIconName, link, container, componentStyle){
+        constructor(fontAwesomeIconName, link, container, componentStyle, isDownload){
             this.icon = fontAwesomeIconName;
             this.container = container;
             this.link = link;
             this.component;
             this.mouseover = false;
+            this.isDownload = isDownload;
 
         }
 

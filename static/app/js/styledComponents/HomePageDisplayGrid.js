@@ -61,8 +61,8 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                     "value":`Javascript is the native language of the Web, and is an essential part of any well-qualified full stack engineer's toolkit.
                     Unlike many front end engineers, I've spent a good amount of time learning vanilla, framework free Javascript in order to make sure
                     that I have the knowledge necessary to quickly adapt to the latest framework or library that your organization may be using, be it JQuery, Angular,
-                    React, or much anything else. In fact, this site, and all of its components (with the exception of the Font-Awesome icon links at the top) was fully
-                    written using only vanilla, framework-less Javascript and RequireJS to help organize and load everything as an educational excercise.`
+                    React, or the next super cool framework. In fact, this site, and all of its components (with the exception of the Font-Awesome icon links at the top) was fully
+                    written using only vanilla, framework-less Javascript and RequireJS to help organize and load everything.`
                 },{
                     "key":"Node.js",
                     "value":`In the last few years, Node.js brought the flexibility of Javascript's loose typing and functional idioms to the server side, and I've found it
@@ -73,7 +73,8 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                     "key":"Responsive HTML / CSS",
                     "value":`HTML and CSS are fundamental skills for building web applications in combination with Javascript. However, with mobile users becoming an
                     increasingly larger customer base, additional considerations must be given for smaller screens and switching on the fly between portrait and landscape
-                    views. I am more than capable of building such responsive interfaces, enabling you to reach those mobile markets.`
+                    views. I am more than capable of building such responsive interfaces, enabling you to reach those mobile markets. This site, by the way, is fully viewable on mobile,
+                    and fully responsive to view changes.`
                 },{
                     "key":"Java",
                     "value":`Java is the language of getting some serious things done at large scale at a pretty good pace. Not to be confused with Javascript (I assure you, the two are absolutely NOT related,)
