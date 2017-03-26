@@ -16,6 +16,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button", "app/components
             this.displayStyle = displayStyle;
 
             //Data Objects
+            this.displayContent;
             //Inherited from ButtonRow
 
             //JS Component Objects
@@ -29,15 +30,12 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button", "app/components
         }
 
         activateOrHideDisplay(contentToDisplay){
+            //trigger all button actives/deactives
             this.buttons.forEach(button =>{
                 if (button.content != contentToDisplay) button.deactivate();
                 else button.activate();
             });
-            if (this.display && this.display.innerHTML == contentToDisplay){
-                this.clearDisplay();
-                this.deactivateAllButtons();
-            }
-            else this.setDisplay(contentToDisplay);
+            this.updateDisplay(contentToDisplay);
         }
 
         buildDisplay() {
@@ -45,6 +43,17 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button", "app/components
                 className:"row-display",
                 style: this.displayStyle
             });
+        }
+
+        updateDisplay(newContent){
+            if (this.display && this.displayContent == newContent){
+                this.clearDisplay();
+                this.deactivateAllButtons();
+            }
+            else {
+                this.displayContent = newContent;
+                this.setDisplay(newContent);
+            }
         }
 
         clearDisplay() {
@@ -55,6 +64,8 @@ define(["app/util/HTMLFragmentBuilder", "app/components/Button", "app/components
             this.display = undefined;
         }
 
+        //Don't use this to change the display -- use updateDisplay
+        //This ensures that we don't rely on the display DOM content for an update
         setDisplay(content) {
             if (!this.display){
                 this.display = this.buildDisplay();
