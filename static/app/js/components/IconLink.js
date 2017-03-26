@@ -9,7 +9,6 @@ define(["app/util/HTMLFragmentBuilder"],
             this.component;
             this.mouseover = false;
             this.isDownload = isDownload;
-
         }
 
         render(){
@@ -25,6 +24,9 @@ define(["app/util/HTMLFragmentBuilder"],
                     className: iconClass
                 })
             );
+            if (this.isDownload){
+                this.component.setAttribute("download", "FrankCamilleriResume.pdf");
+            }
             this.container.innerHTML = "";
             this.container.appendChild(this.component);
             return this;

@@ -61,14 +61,14 @@ define(["app/util/HTMLFragmentBuilder", "app/components/LinkButton", "app/compon
         }
 
         buildLinkRow(){
-            let containerStyle = {style:{width:"2em", display: "inline-block", margin:"1em"}}
+            let containerStyle = {style:{width:"2em", display: "inline-block", margin:"1em"}};
             let gitHubContainer = h.div(containerStyle);
             let linkedInContainer = h.div(containerStyle);
             let pdfContainer = h.div(containerStyle);
             let gitHubLink = new IconLink("github", "https://github.com/fcamilleri22", gitHubContainer);
             let linkedInLink = new IconLink("linkedin", "https://linkedin.com/in/fcamilleri22", linkedInContainer);
-            let pdfLink = new IconLink("file-pdf-o", "https://github.com/fcamilleri22", pdfContainer);
-            gitHubLink.render()
+            let pdfLink = new IconLink("file-pdf-o", "/static/app/FrankCamilleriResume.pdf", pdfContainer, true);
+            gitHubLink.render();
             linkedInLink.render();
             pdfLink.render();
             return h.div({
