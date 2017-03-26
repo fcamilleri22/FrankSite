@@ -10,10 +10,7 @@
   "private": true,
   "dependencies": {
     "requirejs": "^2.3.2",
-    "jquery": "^3.1.1",
-    "text": "requirejs-text#^2.0.15",
     "bootstrap": "^3.3.7",
-    "pdfjs-dist": "^1.6.348",
     "font-awesome": "^4.7.0"
   }
 }
