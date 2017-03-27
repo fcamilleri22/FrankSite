@@ -91,11 +91,10 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                     when writing automated tests. It makes developing large applications in Java as painless as possible. The Mass Exchange backend application was written using Spring.`
                 },{
                     "key":"Hibernate",
-                    "value":`The Hibernate ORM makes it easier to read and store data entities, such as your user data or
+                    "value":`The Hibernate ORM makes it easier to read and store data Java entities, such as your user data or
                     transaction information, with a SQL database. It vastly simplifies mapping my Java objects to SQL
-                    database entities, and how I load them from my database into memory. Hibernate gives me a lot of
-                    control over how database data enters my applications, and because of this, I have used it
-                    extensively in my work at MassExchange.`
+                    database entities, and how I load them from my database into memory. Because of this, I have used it
+                    extensively in my work on the Mass Exchange backend.`
                 },{
                     "key":"QueryDSL",
                     "value":`QueryDSL not only prevents me from having to write SQL in Java in order to query my
