@@ -38,7 +38,6 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                 margin: "auto",
                 "text-align":"left",
                 color:"#cccccc",
-                //"max-width":"90%",
                 padding:"2em",
                 "font-family":"Lato"
             };
@@ -46,29 +45,35 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
             const items = [
                 {
                     "key":"Linux",
-                    "value":`I've been using Linux-based operating systems and learning about them since I was in high school, starting with Fedora. At NYU,
-                    I spent an inordinate amount of time hacking together my own custom distributions based on ubuntu-minimal, Debian, and Arch Linux.
-                    Nowadays, I spend a lot of time in Amazon Linux based instances in AWS, and write code on machines preferrably running Ubuntu 16.04.`
+                    "value":`I have been using Linux-based operating systems and learning about them since I was in high
+                    school, starting with Fedora. At NYU, I spent an inordinate amount of time hacking together my own
+                    custom distributions based on ubuntu-minimal, Debian, and Arch Linux. Nowadays, I spend a lot of
+                    time on Amazon Linux based instances in AWS, and I work on machines preferrably running Ubuntu 16.04.`
                 },{
                     "key":"Git",
-                    "value":`Over the last few years, I've become an expert at using Git, a distributed version control system. At Mass Exchange, I am
-                    very often responsible for handling merges of new releases, figuring out where bugs were introduced and by whom, coordinating
-                    other developers branches using <a href="http://nvie.com/posts/a-successful-git-branching-model/">GitFlow,</a> an extremely
-                    good branching model that prevents myself and other developers from violating and polluting our master branches, and sometimes
-                    even repairing and resetting branches surgically when things do go awry -- and they always eventually do go awry.`
+                    "value":`Over the last few years, I have become an expert at using Git, a distributed version control
+                    system. At Mass Exchange, I am very often responsible for handling merges of new releases, figuring
+                    out where bugs were introduced and by whom, coordinating other developers branches using
+                    <a href="http://nvie.com/posts/a-successful-git-branching-model/">GitFlow,</a> an extremely solid
+                    branching model that prevents myself and other developers from violating and polluting our master
+                    code trunk. Sometimes, I am even repairing and resetting branches surgically when things do go awry
+                    -- and they always eventually do go awry.`
                 },{
                     "key":"Javascript",
-                    "value":`Javascript is the native language of the Web, and is an essential part of any well-qualified full stack engineer's toolkit.
-                    Unlike many front end engineers, I've spent a good amount of time learning vanilla, framework free Javascript in order to make sure
-                    that I have the knowledge necessary to quickly adapt to the latest framework or library that your organization may be using, be it JQuery, Angular,
-                    React, or the next super cool framework. In fact, this site, and all of its components (with the exception of the Font-Awesome icon links at the top) was fully
-                    written using only vanilla, framework-less Javascript and RequireJS to help organize and load everything.`
+                    "value":`Javascript is the native language of the Web, and is an essential part of any
+                    well-qualified full stack engineer's toolkit. Unlike many front end engineers, instead of being
+                    dependent on the latest and shiniest libary, I have spent a good amount of time learning vanilla,
+                    framework free Javascript in order to make sure that I have the knowledge necessary to quickly adapt
+                    to any library or framework I might actually need for the task at hand or that your organization may
+                    be using, be it JQuery, Angular, React, or the next super cool framework. In fact, this site, and
+                    all of its components (except for the Font-Awesome icons at the top) were written using mostly
+                    vanilla, framework-less Javascript, with Node.js and require.js to facilitate in loading my modules.`
                 },{
                     "key":"Node.js",
                     "value":`In the last few years, Node.js brought the flexibility of Javascript's loose typing and functional idioms to the server side, and I've found it
                     to be excellent for quickly prototyping and deploying new backend services and for writing essential DevOps automation tools.
                     However, once the initial version of a backend service has been built in Node, I'd prefer to rewrite it in a language such as Java, as Node.js single-threaded
-                    operation and loose typing can make things difficult at scale.`
+                    operation and loose typing can make things expensive to process and error prone at large scale.`
                 },{
                     "key":"Responsive HTML / CSS",
                     "value":`HTML and CSS are fundamental skills for building web applications in combination with Javascript. However, with mobile users becoming an
@@ -86,8 +91,19 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                     when writing automated tests. It makes developing large applications in Java as painless as possible. The Mass Exchange backend application was written using Spring.`
                 },{
                     "key":"Hibernate",
-                    "value":`The Hibernate ORM makes it easier to read and store data entities, such as user data or order transactions, with a SQL database. It makes persisting business-critical
-                    information almost an afterthought. And with easy Java annotations for things like Lazy Loading, writing fast applications with persisted data with it is less of a hassle`
+                    "value":`The Hibernate ORM makes it easier to read and store data entities, such as your user data or
+                    transaction information, with a SQL database. It vastly simplifies mapping my Java objects to SQL
+                    database entities, and how I load them from my database into memory. Hibernate gives me a lot of
+                    control over how database data enters my applications, and because of this, I have used it
+                    extensively in my work at MassExchange.`
+                },{
+                    "key":"QueryDSL",
+                    "value":`QueryDSL not only prevents me from having to write SQL in Java in order to query my
+                    applications database in a more secure, simplified, and Java-friendly manner, but also allows me to
+                    not have to change too much in order to change from SQL based databases to something more lean, like
+                    MongoDB, or the other way around. It makes my database-interfacing code very clean, readable, and
+                    allows me to make complex queries with ease, preventing my Java application from doing unnecessary
+                    post-query processing or bugs in my complex SQL.`
                 },{
                     "key":"bash / zsh",
                     "value":`Knowledge of a shell scripting language such as the Bourne-Again Shell (BASH) is fundamental for any kind of development operations. Without it, a developer
@@ -98,8 +114,11 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                     to present themselves. I've used jQuery exensively during my time at MassExchange to quickly and easily build our front end interfaces.`
                 },{
                     "key":"JIRA",
-                    "value":`JIRA is an excellent workflow tool for allowing developers to make their work visible, and to keep work organized. I use JIRA daily to make sure that my fellow developers aren't
-                    doing repeated work, and to check on the progress of new features and where they are in the release lifecycle.`
+                    "value":`JIRA is an excellent workflow tool for allowing developers to keep their work highly
+                    visible and organized. I use JIRA daily to make sure that my fellow developers aren't doing repeated
+                    work, and to check on the progress of new features and where they are in the release lifecycle.
+                    I also find it very useful for having developers asynchonously suggest features or report bugs,
+                    and for deciding what branches of code should form the next release of the Mass Exchange platform.`
                 },{
                     "key":"Automated Testing",
                     "value":`Automated testing is a requirement for any good Agile development operation. Without an automated testing solution, developers can't make large changes on a live
@@ -130,14 +149,17 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                     accomplish performing distributed tasks in order to enable you to quickly grow the technology backbone of your business as it grows.`
                 },{
                     "key":"Computer Hardware",
-                    "value":`Ever since I was a child, I've been facinated with computer hardware, and building servers and PC's.
-                    I've built many, many computers, from my own machines, to development machines for Mass Exchange and other clients,
-                    even large rendering boxes for professional art and design studios. A machine I built was even used for rendering promotional
-                    footage for shows such as Showtime's Penny Dreadful and A&E's Bates Motel`
+                    "value":`Ever since I was a child, I've been facinated with computer hardware, especially with
+                    building servers and PC's. I've built many, many computers, including my own machines, development
+                    machines for Mass Exchange and other clients, consumer level office and gaming machines, and even
+                    large rendering boxes for professional art, design, and advertising studios. `
                 },{
-                    "key":"TCP / IP / DNS",
-                    "value":`Knowing how to program is one thing, but one cannot operate in the cloud and over the internet without some fundamental understanding
-                    of computer networking. I can both build an office network, and properly network together cloud services.`
+                    "key":"Computer Networks",
+                    "value":`Knowing how to program is one thing, but one cannot operate in the cloud and over the
+                    internet without some fundamental understanding of computer networking. I can build and maintain physical
+                    computer networks both big and small, fully understand the challenges involved in having your content
+                    and services quickly and cheaply served worldwide, and can pinpoint any problems or bottlenecks in
+                    your networking stack.`
                 },{
                     "key":"Terraform",
                     "value":`Terraform is an excellent technology that enables me to completely manage and describe cloud resources from any popular provider, be it Azure, Digital Ocean, AWS,
