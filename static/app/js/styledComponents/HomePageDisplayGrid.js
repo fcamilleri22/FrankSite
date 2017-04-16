@@ -48,7 +48,8 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                     "value":`I have been using Linux-based operating systems and learning about them since I was in high
                     school, starting with Fedora. At NYU, I spent an inordinate amount of time hacking together my own
                     custom distributions based on ubuntu-minimal, Debian, and Arch Linux. Nowadays, I spend a lot of
-                    time on Amazon Linux based instances in AWS, and I work on machines preferrably running Ubuntu 16.04.`
+                    time on Amazon Linux based instances in AWS, and I program on machines preferrably running the latest
+                    Ubuntu LTS Edition.`
                 },{
                     "key":"Git",
                     "value":`Over the last few years, I have become an expert at using Git, a distributed version control
@@ -77,13 +78,14 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                 },{
                     "key":"Responsive HTML / CSS",
                     "value":`HTML and CSS are fundamental skills for building web applications in combination with Javascript. However, with mobile users becoming an
-                    increasingly larger customer base, additional considerations must be given for smaller screens and switching on the fly between portrait and landscape
+                    increasingly larger consumer base, additional considerations must be given for smaller screens and switching on the fly between portrait and landscape
                     views. I am more than capable of building such responsive interfaces, enabling you to reach those mobile markets. This site, by the way, is fully viewable on mobile,
                     and fully responsive to view changes.`
                 },{
                     "key":"Java",
-                    "value":`Java is the language of getting some serious things done at large scale at a pretty good pace. Not to be confused with Javascript (I assure you, the two are absolutely NOT related,)
-                    Java's automatic garbage collecting and strict typing make it really hard for some silly bugs to occur, and prevents me from having to waste time worrying about memory allocation.`
+                    "value":`Java is the language of getting some serious things done at large scale at a pretty good pace. Not to be confused with Javascript,
+                    Java's automatic garbage collecting and strict typing make it really hard for some silly bugs to occur,
+                    and prevents me from having to waste time worrying about memory allocation.`
                 },{
                     "key":"Spring",
                     "value":`The Spring Framework for Java prevents an organization from needing to reinvent the wheel, with modules that cover everything from data transaction managment to
@@ -105,11 +107,14 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                     post-query processing or bugs in my complex SQL.`
                 },{
                     "key":"bash / zsh",
-                    "value":`Knowledge of a shell scripting language such as the Bourne-Again Shell (BASH) is fundamental for any kind of development operations. Without it, a developer
-                    can't properly control his/her development machine in an automated fashion, and is doomed to manually repeat even the simplest of manual tasks.`
+                    "value":`Knowledge of a shell scripting language such as the Bourne-Again Shell (BASH) is fundamental
+                    for any kind of task automation. Without it, a developer can't properly control his/her development
+                    machine in an automated fashion, and is doomed to manually repeat even the simplest of manual tasks.
+                    I have been writing shell scripts for automatically setting up and building both development and
+                    entertainment environments, as well as for building custom Linux distributions since my high school days`
                 },{
                     "key":"jQuery",
-                    "value":`jQuery is quite simply, a library that does exactly what it reports to do. It enables a development team to do more with less code, leading to less surface area for bugs
+                    "value":`jQuery is quite simply, a library that does exactly what it says it does: Write Less, Do More. It enables a development team to do more with less code, leading to less surface area for bugs
                     to present themselves. I've used jQuery exensively during my time at MassExchange to quickly and easily build our front end interfaces.`
                 },{
                     "key":"JIRA",
@@ -117,7 +122,9 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                     visible and organized. I use JIRA daily to make sure that my fellow developers aren't doing repeated
                     work, and to check on the progress of new features and where they are in the release lifecycle.
                     I also find it very useful for having developers asynchonously suggest features or report bugs,
-                    and for deciding what branches of code should form the next release of the Mass Exchange platform.`
+                    and for deciding what branches of code should form the next release of the Mass Exchange platform. The
+                    ability to automate workflows with it through its integrations also allows me to keep track of work
+                    with very little intervention from the developers to use it.`
                 },{
                     "key":"Automated Testing",
                     "value":`Automated testing is a requirement for any good Agile development operation. Without an automated testing solution, developers can't make large changes on a live
@@ -144,16 +151,16 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                     As far as my experience with them goes, I've found that MongoDB is really good for quickly prototyping new backend persistence before moving on to something more rock solid like MySQL.`
                 },{
                     "key":"Distributed Systems",
-                    "value":`Building systems in a distributed fashion is paramount for a cloud based application to scale up and down according to demand. I am able to design backend services to
+                    "value":`Building systems in a distributed fashion is paramount for a cloud based application to scale up and down according to demand. I am able to design backend microservices to
                     accomplish performing distributed tasks in order to enable you to quickly grow the technology backbone of your business as it grows.`
                 },{
                     "key":"Computer Hardware",
                     "value":`Ever since I was a child, I've been facinated with computer hardware, especially with
-                    building servers and PC's. I've built many, many computers, including my own machines, development
+                    building servers and PC's. I've built many, many computers, including machines for my own use, development
                     machines for Mass Exchange and other clients, consumer level office and gaming machines, and even
                     large rendering boxes for professional art, design, and advertising studios. `
                 },{
-                    "key":"Computer Networks",
+                    "key":"Computer Networking",
                     "value":`Knowing how to program is one thing, but one cannot operate in the cloud and over the
                     internet without some fundamental understanding of computer networking. I can build and maintain physical
                     computer networks both big and small, fully understand the challenges involved in having your content
@@ -166,8 +173,8 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                     application environment deployed and fully configured in under 10 minutes in a single command, with the ability to take it all down just as fast.`
                 },{
                     "key":"Excel Automation",
-                    "value":`Using a library called Apache POI, I can automate and integrate Excel spreadsheets into your existing web applications, meaning that I can work more easily
-                    with data analysts and more quickly turn their spreadsheets into full web applications in Java with a Javascript frontend.`
+                    "value":`Using a library called Apache POI, I can automate and integrate Excel spreadsheets into your existing web applications, meaning that I can work better
+                    with data analysts and more quickly turn their spreadsheets into full applications.`
                 },{
                     "key":"API Integration",
                     "value":`I am quite adept at integrating applications with third party services, such as Google's DFP and Amazon AWS, in order to utilize already existing web services
@@ -178,7 +185,7 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                     Using my shell scripting and automation abilities, I can automate builds and make your code as agile as your business requires.`
                 },{
                     "key":"Package Management",
-                    "value":`Package managers, such as NPM, Maven, apt, and rpm make gathering the dependencies for applications and development enviroments easy. I find myself very frequently
+                    "value":`Package managers, such as NPM, Maven, apt, and rpm make gathering the dependencies for applications and development enviroments effortless. I find myself very frequently
                     writing scripts for automating such tasks for not only deploying applications to new cloud instances, but for also automatically setting up development environments for new developers.`
                 }
             ];
