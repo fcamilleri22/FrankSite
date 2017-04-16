@@ -37,7 +37,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/LinkButton", "app/compon
                     "text-align":"center",
                     width:"100%",
                     margin:"auto",
-                    color:"#bbbbbb",
+                    color:"#cccccc",
                     "font-size": "3em",
                     "text-shadow": "2px 2px 3px rgba(0,0,0,0.6)"
                 }
@@ -52,7 +52,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/LinkButton", "app/compon
                     "text-align":"center",
                     margin:"auto",
                     "margin-top": "5px",
-                    color:"#bbbbbb",
+                    color:"#cccccc",
                     width:"100%",
                     "font-size": "1.25em",
                     "text-shadow": "2px 2px 3px rgba(0,0,0,0.6)"
