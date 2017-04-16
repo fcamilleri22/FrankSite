@@ -55,10 +55,9 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                     "value":`Over the last few years, I have become an expert at using Git, a distributed version control
                     system. At Mass Exchange, I am very often responsible for handling merges of new releases, figuring
                     out where bugs were introduced and by whom, coordinating other developers branches using
-                    <a href="http://nvie.com/posts/a-successful-git-branching-model/">GitFlow,</a> an extremely solid
+                    GitFlow, an extremely solid
                     branching model that prevents myself and other developers from violating and polluting our master
-                    code trunk. Sometimes, I am even repairing and resetting branches surgically when things do go awry
-                    -- and they always eventually do go awry.`
+                    branch. When things go awry, I can even repair and reset branches surgically if necessary.`
                 },{
                     "key":"Javascript",
                     "value":`Javascript is the native language of the Web, and is an essential part of any
@@ -111,7 +110,7 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                     for any kind of task automation. Without it, a developer can't properly control his/her development
                     machine in an automated fashion, and is doomed to manually repeat even the simplest of manual tasks.
                     I have been writing shell scripts for automatically setting up and building both development and
-                    entertainment environments, as well as for building custom Linux distributions since my high school days`
+                    entertainment environments, as well as for building custom Linux distributions since my high school days.`
                 },{
                     "key":"jQuery",
                     "value":`jQuery is quite simply, a library that does exactly what it says it does: Write Less, Do More. It enables a development team to do more with less code, leading to less surface area for bugs
@@ -119,12 +118,12 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                 },{
                     "key":"JIRA",
                     "value":`JIRA is an excellent workflow tool for allowing developers to keep their work highly
-                    visible and organized. I use JIRA daily to make sure that my fellow developers aren't doing repeated
-                    work, and to check on the progress of new features and where they are in the release lifecycle.
+                    visible and organized. I use JIRA daily to make sure that my team is not performing duplicate efforts
+                    and to check on the progress of new features and where they are in the release lifecycle.
                     I also find it very useful for having developers asynchonously suggest features or report bugs,
                     and for deciding what branches of code should form the next release of the Mass Exchange platform. The
                     ability to automate workflows with it through its integrations also allows me to keep track of work
-                    with very little intervention from the developers to use it.`
+                    with very little manual intervention from the developers who need to use it.`
                 },{
                     "key":"Automated Testing",
                     "value":`Automated testing is a requirement for any good Agile development operation. Without an automated testing solution, developers can't make large changes on a live
@@ -134,7 +133,7 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                 },{
                     "key":"Continuous Integration",
                     "value":`Continuous integration is the art of ensuring that every commit a developer does actually compiles, builds, and passes the full suite of automated tests.
-                    Without good continuous integration systems, such as Travis or Codeship, an organization can potentially release a bad version of their platform, creating immense headaches and
+                    Without good continuous integration systems, such as Travis CI or Codeship.io, an organization can potentially release a bad version of their platform, creating immense headaches and
                     keeping developers working late, which nobody wants to do. A good continuous integration system also automates building and packaging your code, making it easier to
                     execute automated deployments with ease, as often as possible.`
                 },{
@@ -198,7 +197,7 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
             return h.h2({
                 class: "grid-title",
                 style: {
-                    "color": "#aaaaaa",
+                    "color": "#cccccc",
                     "font-family": "Lato",
                     "text-shadow": "2px 2px 3px rgba(0,0,0,0.6)",
                     "margin":"auto",
