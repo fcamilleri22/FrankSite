@@ -18,7 +18,7 @@ define(["app/util/HTMLFragmentBuilder"],
             return h.h2({
                 class: "paragraph-title",
                 style: {
-                    "color": "#aaaaaa",
+                    "color": "#cccccc",
                     "font-family": "Lato",
                     "text-shadow": "2px 2px 3px rgba(0,0,0,0.6)"
                 }
