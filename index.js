@@ -7,6 +7,9 @@ var cleanPath = (path) => {
     if (path == "/") {
         return "app/html/app.html";
     }
+    if (path == "/favicon.ico") {
+        return "app/img/favicon.ico";
+    }
     var splitPath = path.split("/").slice(1);
     return splitPath[0] == "static" ? splitPath.slice(1).join("/") : path;
 };
