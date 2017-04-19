@@ -18,7 +18,7 @@ function(DisplayGrid, PageTitle, ParagraphSection, h, HomePageDisplayGrid, Foote
         "Don't just bring in any 'computer guy' from the backwoods of the internet..."
     );
     paragraph.addContent(
-        `I prefer to solve technology problems from a <b><em>holistic and generalized</b></em> point of view, whether its a shoddily
+        `I prefer to solve technology problems from a <b><em>holistic and generalized</b></em> point of view, whether it's a shoddily
         performing back end/API, a janky front end experience, a discombobulated database schema, suboptimal hardware/cloud
         configurations, <b><em>or a complete lack of any technology stack whatsoever.</b></em>`
     );
