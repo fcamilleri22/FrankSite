@@ -48,7 +48,7 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                     "value":`I have been using Linux-based operating systems and learning about them since I was in high
                     school, starting with Fedora. At NYU, I spent an inordinate amount of time hacking together my own
                     custom distributions based on ubuntu-minimal, Debian, and Arch Linux. Nowadays, I spend a lot of
-                    time on Amazon Linux based instances in AWS, and I program on machines preferrably running the latest
+                    time on Amazon Linux based instances in AWS, and I program on machines preferably running the latest
                     Ubuntu LTS Edition.`
                 },{
                     "key":"Git",
@@ -62,7 +62,7 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                     "key":"Javascript",
                     "value":`Javascript is the native language of the Web, and is an essential part of any
                     well-qualified full stack engineer's toolkit. Unlike many front end engineers, instead of being
-                    dependent on the latest and shiniest libary, I have spent a good amount of time learning vanilla,
+                    dependent on the latest and shiniest library, I have spent a good amount of time learning vanilla,
                     framework free Javascript in order to make sure that I have the knowledge necessary to quickly adapt
                     to any library or framework I might actually need for the task at hand or that your organization may
                     be using, be it JQuery, Angular, React, or the next super cool framework. In fact, this site, and
@@ -87,7 +87,7 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                     and prevents me from having to waste time worrying about memory allocation.`
                 },{
                     "key":"Spring",
-                    "value":`The Spring Framework for Java prevents an organization from needing to reinvent the wheel, with modules that cover everything from data transaction managment to
+                    "value":`The Spring Framework for Java prevents an organization from needing to reinvent the wheel, with modules that cover everything from data transaction management to
                     user authentication to asynchronous routines. Its inversion-of-control system allows a developer some more ease in developing solid modular code, and also makes for easier dependency mocking
                     when writing automated tests. It makes developing large applications in Java as painless as possible. The Mass Exchange backend application was written using Spring.`
                 },{
@@ -114,13 +114,13 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                 },{
                     "key":"jQuery",
                     "value":`jQuery is quite simply, a library that does exactly what it says it does: Write Less, Do More. It enables a development team to do more with less code, leading to less surface area for bugs
-                    to present themselves. I've used jQuery exensively during my time at MassExchange to quickly and easily build our front end interfaces.`
+                    to present themselves. I've used jQuery extensively during my time at MassExchange to quickly and easily build our front end interfaces.`
                 },{
                     "key":"JIRA",
                     "value":`JIRA is an excellent workflow tool for allowing developers to keep their work highly
                     visible and organized. I use JIRA daily to make sure that my team is not performing duplicate efforts
                     and to check on the progress of new features and where they are in the release lifecycle.
-                    I also find it very useful for having developers asynchonously suggest features or report bugs,
+                    I also find it very useful for having developers asynchronously suggest features or report bugs,
                     and for deciding what branches of code should form the next release of the Mass Exchange platform. The
                     ability to automate workflows with it through its integrations also allows me to keep track of work
                     with very little manual intervention from the developers who need to use it.`
@@ -154,7 +154,7 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                     accomplish performing distributed tasks in order to enable you to quickly grow the technology backbone of your business as it grows.`
                 },{
                     "key":"Computer Hardware",
-                    "value":`Ever since I was a child, I've been facinated with computer hardware, especially with
+                    "value":`Ever since I was a child, I've been fascinated with computer hardware, especially with
                     building servers and PC's. I've built many, many computers, including machines for my own use, development
                     machines for Mass Exchange and other clients, consumer level office and gaming machines, and even
                     large rendering boxes for professional art, design, and advertising studios. `
@@ -184,7 +184,7 @@ define(["app/util/HTMLFragmentBuilder","app/components/DisplayGrid"],
                     Using my shell scripting and automation abilities, I can automate builds and make your code as agile as your business requires.`
                 },{
                     "key":"Package Management",
-                    "value":`Package managers, such as NPM, Maven, apt, and rpm make gathering the dependencies for applications and development enviroments effortless. I find myself very frequently
+                    "value":`Package managers, such as NPM, Maven, apt, and rpm make gathering the dependencies for applications and development environments effortless. I find myself very frequently
                     writing scripts for automating such tasks for not only deploying applications to new cloud instances, but for also automatically setting up development environments for new developers.`
                 }
             ];
