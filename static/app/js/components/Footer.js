@@ -31,19 +31,25 @@ define(["app/util/HTMLFragmentBuilder", "app/components/IconLink"],
         }
 
         buildLinkedInButton(){
-            let containerStyle = {style:{width:"2em", display: "inline-block", "margin-bottom":"1em"}};
+            let containerStyle = {
+                style:{
+                    width:"100%",
+                    "text-align": "center",
+                    "margin":"auto"
+                }
+            };
             let linkedInContainer = h.div(containerStyle);
             let linkedInLink = new IconLink("linkedin", "https://linkedin.com/in/fcamilleri22", linkedInContainer);
-            linkedInLink.render();
-            return h.div({
-                className:"Links",
-                style:{
-                    "text-align": "center",
-                    width:"100%"
-                }
-            },
-                linkedInContainer
-            );
+            return linkedInLink.render().container
+            // return h.div({
+            //     className:"Links",
+            //     style:{
+            //         "text-align": "center",
+            //         width:"100%"
+            //     }
+            // },
+            //     linkedInContainer
+            // );
         }
 
         buildComponent(){
