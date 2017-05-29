@@ -1,18 +1,24 @@
 define(["app/util/HTMLFragmentBuilder", "app/components/IconLink"],
 (h, IconLink) => {
     return class Footer {
-        constructor(footTitle, container){
+        //Note: footContent should be responsible for its own styling.
+        constructor(footTitle, container, footContent, componentStyles){
             //Style Objects
-            //Defined Inline
+            let {componentStyle, contentContainerStyle, titleStyle} = componentStyles;
+            this.componentStyle = componentStyle;
+            this.contentContainerStyle = contentContainerStyle;
+            this.titleStyle = titleStyle;
 
             //Data Objects
             this.footTitle = footTitle;
+            this.footContent = footContent;
 
             //JS Component Objects
 
             //HTML Component Objects
-            this.container = container;
-            this.component;
+            this.container = container;         //contains the entire object
+            this.contentContainer;              //contains the content object
+            this.component;                     //the actual entire object
 
             //State Controls
         }
@@ -30,27 +36,31 @@ define(["app/util/HTMLFragmentBuilder", "app/components/IconLink"],
             }, this.footTitle);
         }
 
+        buildContent(){
+
+        }
+
         buildLinkedInButton(){
             let containerStyle = {
                 style:{
                     width:"100%",
-                    "text-align": "center",
-                    "margin":"auto"
-                }
-            };
-            let linkedInContainer = h.div(containerStyle);
-            let linkedInLink = new IconLink("linkedin", "https://linkedin.com/in/fcamilleri22", linkedInContainer);
-            return linkedInLink.render().container
-            // return h.div({
-            //     className:"Links",
-            //     style:{
-            //         "text-align": "center",
-            //         width:"100%"
-            //     }
-            // },
-            //     linkedInContainer
-            // );
         }
+
+        // buildLinkedInButton(){
+        //     let containerStyle = {style:{width:"2em", display: "inline-block", "margin-bottom":"1em"}};
+        //     let linkedInContainer = h.div(containerStyle);
+        //     let linkedInLink = new IconLink("linkedin", "https://linkedin.com/in/fcamilleri22", linkedInContainer);
+        //     linkedInLink.render();
+        //     return h.div({
+        //         className:"Links",
+        //         style:{
+        //             "text-align": "center",
+        //             width:"100%"
+        //         }
+        //     },
+        //         linkedInContainer
+        //     );
+        // }
 
         buildComponent(){
             return h.div({
