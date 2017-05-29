@@ -25,42 +25,17 @@ define(["app/util/HTMLFragmentBuilder", "app/components/IconLink"],
 
         buildFootTitle(){
             return h.h2({
-                id: "subtitle",
-                style:{
-                    "font-family": "Lato",
-                    "text-align":"center",
-                    color:"#cccccc",
-                    width:"100%",
-                    "text-shadow": "2px 2px 3px rgba(0,0,0,0.6)"
-                }
+                id: "footerSubtitle",         //TODO: Try `${this.constructor.name}Subtitle`
+                style:this.titleStyle
             }, this.footTitle);
         }
 
-        buildContent(){
-
+        buildContent(){                         //TODO: Think about maybe checking if
+            return h.div({                      //content is a string or a frankable object
+                id: "footerContent",
+                style:this.contentContainerStyle
+            }, this.footContent);
         }
-
-        buildLinkedInButton(){
-            let containerStyle = {
-                style:{
-                    width:"100%",
-        }
-
-        // buildLinkedInButton(){
-        //     let containerStyle = {style:{width:"2em", display: "inline-block", "margin-bottom":"1em"}};
-        //     let linkedInContainer = h.div(containerStyle);
-        //     let linkedInLink = new IconLink("linkedin", "https://linkedin.com/in/fcamilleri22", linkedInContainer);
-        //     linkedInLink.render();
-        //     return h.div({
-        //         className:"Links",
-        //         style:{
-        //             "text-align": "center",
-        //             width:"100%"
-        //         }
-        //     },
-        //         linkedInContainer
-        //     );
-        // }
 
         buildComponent(){
             return h.div({
@@ -70,7 +45,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/IconLink"],
                 }
             },
             this.buildFootTitle(),
-            this.buildLinkedInButton());
+            this.buildContent());
         }
 
         render(){
