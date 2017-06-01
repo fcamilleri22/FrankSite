@@ -1,5 +1,5 @@
-define(["app/util/HTMLFragmentBuilder", "app/components/IconLink"],
-(h, IconLink) => {
+define(["app/util/HTMLFragmentBuilder"],
+(h) => {
     return class Footer {
         //Note: footContent should be responsible for its own styling.
         constructor(footTitle, container, footContent, componentStyles){
@@ -21,11 +21,12 @@ define(["app/util/HTMLFragmentBuilder", "app/components/IconLink"],
             this.component;                     //the actual entire object
 
             //State Controls
+            this.state = "Unrendered";
         }
 
         buildFootTitle(){
-            return h.h2({
-                id: "footerSubtitle",         //TODO: Try `${this.constructor.name}Subtitle`
+            return h.div({
+                id: "footerTitle",         //TODO: Try `${this.constructor.name}Subtitle`
                 style:this.titleStyle
             }, this.footTitle);
         }
@@ -40,9 +41,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/IconLink"],
         buildComponent(){
             return h.div({
                 className: "PageTitle",
-                style: {
-                    margin:"auto"
-                }
+                style: this.componentStyle
             },
             this.buildFootTitle(),
             this.buildContent());
@@ -53,6 +52,7 @@ define(["app/util/HTMLFragmentBuilder", "app/components/IconLink"],
                 this.component = this.buildComponent();
                 this.container.innerHTML = "";
                 this.container.appendChild(this.component);
+                this.state = "Rendered";
                 resolve(this);
             });
         }
