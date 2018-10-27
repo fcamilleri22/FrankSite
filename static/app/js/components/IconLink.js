@@ -1,16 +1,26 @@
 define(["app/util/HTMLFragmentBuilder"],
 (h) => {
-    //Requires Bootstrap/FontAwesome
+    //Requires FontAwesome
     return class IconLink{
-        constructor(fontAwesomeIconName, link, container, isDownload){
+        constructor(fontAwesomeIconName, link, container, componentStyles, isDownload){
+            //Style Objects
+            let {componentStyle, hoverStyle} = componentStyles;
+            this.componentStyle = componentStyle;
+            this.hoverStyle = hoverStyle;
+
+            //Data Objects
             this.icon = fontAwesomeIconName;
-            this.container = container;
             this.link = link;
+
+            //JS Component Objects
+
+            //HTML Component Objects
+            this.container = container;
             this.component;
+
+            //State Controls
             this.mouseover = false;
             this.isDownload = isDownload;
-            this.componentStyle = {color:"#33aadd"};
-            this.hoverStyle = {color:"#ff7e2a"};
         }
 
         applyStyle(newStyle){
@@ -23,9 +33,7 @@ define(["app/util/HTMLFragmentBuilder"],
             this.component =
             h.a({
                 href: this.link,
-                style:{
-                    color:"#33aadd",
-                },
+                style: this.componentStyle,
                 onmouseover:    () => {
                     this.mouseover = true;
                     this.applyStyle(thisClass.hoverStyle);

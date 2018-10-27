@@ -27,6 +27,13 @@ define(["app/util/HTMLFragmentBuilder", "app/components/LinkButton", "app/compon
                 "background-color": "#555555",
                 "text-shadow": "0px 0px 0px rgba(0,0,0,0)"
             };
+            this.iconStyles = {};
+            this.iconStyles.componentStyle = {
+                color: "#33aadd"
+            };
+            this.iconStyles.hoverStyle = {
+                color: "#ff7e2a"
+            };
         }
 
         buildTitle(){
@@ -65,9 +72,25 @@ define(["app/util/HTMLFragmentBuilder", "app/components/LinkButton", "app/compon
             let gitHubContainer = h.div(containerStyle);
             let linkedInContainer = h.div(containerStyle);
             let pdfContainer = h.div(containerStyle);
-            let gitHubLink = new IconLink("github", "https://github.com/fcamilleri22", gitHubContainer);
-            let linkedInLink = new IconLink("linkedin", "https://linkedin.com/in/fcamilleri22", linkedInContainer);
-            let pdfLink = new IconLink("file-pdf-o", "/static/app/FrankCamilleriResume.pdf", pdfContainer, true);
+            let gitHubLink = new IconLink(
+                "github",
+                "https://github.com/fcamilleri22",
+                gitHubContainer,
+                this.iconStyles
+            );
+            let linkedInLink = new IconLink(
+                "linkedin",
+                "https://linkedin.com/in/fcamilleri22",
+                linkedInContainer,
+                this.iconStyles
+            );
+            let pdfLink = new IconLink(
+                "file-pdf-o",
+                "/static/app/FrankCamilleriResume.pdf",
+                pdfContainer,
+                this.iconStyles,
+                true
+            );
             gitHubLink.render();
             linkedInLink.render();
             pdfLink.render();

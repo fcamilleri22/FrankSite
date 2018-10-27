@@ -38,10 +38,15 @@ define(["app/util/HTMLFragmentBuilder","app/components/Footer","app/components/I
                 id: "footerContent",
                 style:this.contentContainerStyle
             });
+            let iconStyles = {
+                componentStyle:{color: "#33aadd"},
+                hoverStyle:{color: "#ff7e2a"}
+            };
             this.footContent = new IconLink(
                 "linkedin",
                 "https://linkedin.com/in/fcamilleri22",
-                linkedInContainer
+                linkedInContainer,
+                iconStyles
             );
             return this.footContent.render().container;
         }
