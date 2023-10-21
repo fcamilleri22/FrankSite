@@ -10,6 +10,7 @@
     "parserOptions": {
         "sourceType": "module"
     },
+    "root": true,
     "rules": {
         "indent": [
             "error",
